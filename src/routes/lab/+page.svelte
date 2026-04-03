@@ -1,22 +1,16 @@
+<script lang="ts">
+	import { _ } from '$lib/i18n';
+</script>
+
 <svelte:head>
-	<title>Lab | Jannik Portfolio</title>
-	<meta
-		name="description"
-		content="Experimental playground for interaction and rendering ideas, isolated from core portfolio pages."
-	/>
-	<meta property="og:title" content="Lab | Jannik Portfolio" />
-	<meta
-		property="og:description"
-		content="Experimental playground for interaction and rendering ideas, isolated from core portfolio pages."
-	/>
+	<title>{$_('lab.title')}</title>
+	<meta name="description" content={$_('lab.description')} />
+	<meta property="og:title" content={$_('lab.title')} />
+	<meta property="og:description" content={$_('lab.description')} />
 </svelte:head>
 
 <section class="max-w-2xl space-y-4">
-	<h1 class="text-3xl font-semibold tracking-tight">Lab</h1>
-	<p class="text-muted-foreground">
-		This section is intentionally isolated for experiments. Main site pages prioritize stability and
-		maintainability.
-	</p>
-	<p class="text-muted-foreground">First experiments will be added here next.</p>
+	<h1 class="text-3xl font-semibold tracking-tight">{$_('lab.heading')}</h1>
+	<p class="text-muted-foreground">{$_('lab.paragraphOne')}</p>
+	<p class="text-muted-foreground">{$_('lab.paragraphTwo')}</p>
 </section>
-
