@@ -22,7 +22,7 @@ jobs:
 
       - name: Create version tag from package.json
         env:
-          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
 
@@ -34,14 +34,9 @@ jobs:
             exit 0
           fi
 
-          if [ -z "${RELEASE_TOKEN:-}" ]; then
-            echo "Missing secrets.RELEASE_TOKEN. Tag push from GITHUB_TOKEN will not trigger release-on-tag."
-            exit 1
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin "https://x-access-token:${RELEASE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git tag -a "${TAG}" -m "Release ${TAG}"
           git push origin "${TAG}"
           echo "Created and pushed ${TAG}"
