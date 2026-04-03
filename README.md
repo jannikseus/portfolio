@@ -35,8 +35,7 @@ bun run build
 
 - Uses `@sveltejs/adapter-node` for SSR output
 - Start built server with Bun runtime
-- GitHub Actions publishes container images to GHCR on `main`
-- Pushing tags like `v1.2.3` creates a GitHub Release and updates `CHANGELOG.md`
+- GitHub Actions publishes container images to GHCR on pushes to `main` (`latest` + commit SHA tags)
 
 ```sh
 bun run build
@@ -47,7 +46,6 @@ Pull the published image with:
 
 ```sh
 docker pull ghcr.io/<owner>/<repo>:latest
-docker pull ghcr.io/<owner>/<repo>:v1.2.3
 ```
 
 ## Internationalization
