@@ -35,10 +35,17 @@ bun run build
 
 - Uses `@sveltejs/adapter-node` for SSR output
 - Start built server with Bun runtime
+- GitHub Actions publishes container images to GHCR
 
 ```sh
 bun run build
 bun run start
+```
+
+Pull the published image with:
+
+```sh
+docker pull ghcr.io/<owner>/<repo>:latest
 ```
 
 ## Internationalization
