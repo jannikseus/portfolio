@@ -1,4 +1,4 @@
-name: build-and-push
+name: ci-image
 
 on:
   push:
@@ -20,19 +20,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
 
-      - name: Read package version
-        id: version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          MAJOR=$(printf '%s' "$VERSION" | cut -d. -f1)
-          MINOR=$(printf '%s' "$VERSION" | cut -d. -f2)
-          SHORT_SHA=$(printf '%s' "$GITHUB_SHA" | cut -c1-7)
-
-          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "major=$MAJOR" >> "$GITHUB_OUTPUT"
-          echo "minor=$MINOR" >> "$GITHUB_OUTPUT"
-          echo "short_sha=$SHORT_SHA" >> "$GITHUB_OUTPUT"
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -49,11 +36,7 @@ jobs:
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=latest
-            type=raw,value=v${{ steps.version.outputs.value }}
-            type=raw,value=v${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}
-            type=raw,value=v${{ steps.version.outputs.major }}
-            type=raw,value=v${{ steps.version.outputs.value }}-sha.${{ steps.version.outputs.short_sha }}
+            type=raw,value=edge
             type=sha,format=long
 
       - name: Build and push image
