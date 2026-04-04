@@ -8,20 +8,20 @@ The following information provides a simple overview of what happens to your per
 
 ### Data Collection on This Website
 
-Who is responsible for data collection on this website?
-> Data processing on this website is carried out by the website operator. You can find their contact details in the section "Information on the Responsible Entity" in this privacy policy.
+#### Who is responsible for data collection on this website?
+Data processing on this website is carried out by the website operator. You can find their contact details in the section "Information on the Responsible Entity" in this privacy policy.
 
-How do we collect your data?
-> Some data is collected when you provide it to us. This may include, for example, data you enter into a contact form.
+#### How do we collect your data?
+Some data is collected when you provide it to us. This may include, for example, data you enter into a contact form.
 
-> Other data is collected automatically, or after your consent, when you visit the website through our IT systems.
+#### Other data is collected automatically, or after your consent, when you visit the website through our IT systems.
 This is mainly technical data (e.g. internet browser, operating system, or time of page access). This data is collected automatically as soon as you enter this website.
 
-What do we use your data for?
-> Some of the data is collected to ensure that the website is provided without errors. Other data may be used to analyze your user behavior. If contracts can be concluded or initiated via the website, the transmitted data is also processed for contract offers, orders, or other order-related inquiries.
+#### What do we use your data for?
+Some of the data is collected to ensure that the website is provided without errors. Other data may be used to analyze your user behavior. If contracts can be concluded or initiated via the website, the transmitted data is also processed for contract offers, orders, or other order-related inquiries.
 
-**What rights do you have regarding your data?**
-> You have the right at any time to receive information free of charge about the origin, recipients, and purpose of your stored personal data. You also have the right to request the correction or deletion of this data. If you have given consent to data processing, you may revoke this consent at any time for the future. You also have the right, under certain circumstances, to request restriction of the processing of your personal data. Furthermore, you have the right to lodge a complaint with the competent supervisory authority.
+#### What rights do you have regarding your data?
+You have the right at any time to receive information free of charge about the origin, recipients, and purpose of your stored personal data. You also have the right to request the correction or deletion of this data. If you have given consent to data processing, you may revoke this consent at any time for the future. You also have the right, under certain circumstances, to request restriction of the processing of your personal data. Furthermore, you have the right to lodge a complaint with the competent supervisory authority.
 
 You can contact us at any time regarding this and other questions on data protection.
 
@@ -46,7 +46,7 @@ Vilnius 03230\
 Lithuania\
 Email: domains@hostinger.com
 
-**Order Processing**
+#### Order Processing
 
 We have concluded a data processing agreement (DPA) for the use of the service mentioned above. This is a contract required by data protection law that ensures the service processes the personal data of our website visitors only according to our instructions and in compliance with the GDPR.
 
@@ -76,7 +76,9 @@ The responsible entity is the natural or legal person who alone or jointly with 
 
 Unless a more specific storage period is stated within this privacy policy, your personal data remains with us until the purpose for data processing no longer applies. If you assert a legitimate request for deletion or revoke your consent to data processing, your data will be deleted unless we have other legally permissible reasons for storing your personal data (e.g. retention periods under tax or commercial law); in the latter case, deletion takes place after those reasons cease to apply.
 
-### General Information on the Legal Bases of Data Processing on This Website
+### General Information on the Legal Bases of Data Processing on This
+
+### Website
 
 If you have consented to data processing, we process your personal data on the basis of Art. 6 para. 1 lit. a GDPR or Art. 9 para. 2 lit. a GDPR if special categories of data are processed according to Art. 9 para. 1 GDPR. In the case of explicit consent to the transfer of personal data to third countries, data processing is also carried out on the basis of Art. 49 para. 1 lit. a GDPR. If you have consented to the storage of cookies or to access to information on your device (e.g. via device fingerprinting), data processing is additionally carried out on the basis of Section 25 para. 1 TDDDG. Consent can be revoked at any time. If your data is required for contract fulfillment or for the implementation of pre-contractual measures, we process your data on the basis of Art. 6 para. 1 lit. b GDPR. Furthermore, we process your data if this is necessary for compliance with a legal obligation on the basis of Art. 6 para. 1 lit. c GDPR. Data processing may also be based on our legitimate interest pursuant to Art. 6 para. 1 lit. f GDPR. Information on the legal basis applicable in each individual case is provided in the following paragraphs of this privacy policy.
 
@@ -88,7 +90,9 @@ As part of our business operations, we work with various external parties. In so
 
 Many data processing operations are only possible with your explicit consent. You may revoke consent already given at any time. The lawfulness of data processing carried out before revocation remains unaffected by the revocation.
 
-### Right to Object to Data Collection in Special Cases and to Direct Marketing (Art. 21 GDPR)
+### Right to Object to Data Collection in Special Cases and to
+
+### Direct Marketing (Art. 21 GDPR)
 
 **IF DATA PROCESSING IS BASED ON ART. 6 PARA. 1 LIT. E OR F GDPR, YOU HAVE THE RIGHT TO OBJECT AT ANY TIME, ON GROUNDS RELATING TO YOUR PARTICULAR SITUATION, TO THE PROCESSING OF YOUR PERSONAL DATA; THIS ALSO APPLIES TO PROFILING BASED ON THESE PROVISIONS. THE RESPECTIVE LEGAL BASIS ON WHICH PROCESSING IS BASED CAN BE FOUND IN THIS PRIVACY POLICY. IF YOU OBJECT, WE WILL NO LONGER PROCESS YOUR PERSONAL DATA UNLESS WE CAN DEMONSTRATE COMPELLING LEGITIMATE GROUNDS FOR THE PROCESSING THAT OVERRIDE YOUR INTERESTS, RIGHTS, AND FREEDOMS OR THE PROCESSING SERVES TO ESTABLISH, EXERCISE, OR DEFEND LEGAL CLAIMS (OBJECTION UNDER ART. 21 PARA. 1 GDPR).**
 
@@ -123,6 +127,4 @@ For security reasons and to protect the transmission of confidential content, su
 
 If SSL or TLS encryption is activated, the data you transmit to us cannot be read by third parties.
 
-Source:
-https://www.e-recht24.de
-
+Source: https://www.e-recht24.de

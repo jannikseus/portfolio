@@ -12,25 +12,25 @@ Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.
 
 ### Datenerfassung auf dieser Website
 
-Wer ist verantwortlich für die Datenerfassung auf dieser Website?
-> Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten
+#### Wer ist verantwortlich für die Datenerfassung auf dieser Website?
+Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten
 können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.
 
-Wie erfassen wir Ihre Daten?
-> Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um
+#### Wie erfassen wir Ihre Daten?
+Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um
 Daten handeln, die Sie in ein Kontaktformular eingeben.
 
-> Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst.
+#### Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst.
 Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit
 des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.
 
-Wofür nutzen wir Ihre Daten?
-> Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere
+#### Wofür nutzen wir Ihre Daten?
+Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere
 Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden. Sofern über die Website Verträge
 geschlossen oder angebahnt werden können, werden die übermittelten Daten auch für Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet.
 
-**Welche Rechte haben Sie bezüglich Ihrer Daten?**
-> Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer
+#### Welche Rechte haben Sie bezüglich Ihrer Daten?
+Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer
 gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder
 Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben,
 können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter
@@ -63,15 +63,13 @@ Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Date
 
 Wir setzen folgende(n) Hoster ein:
 
-
 > HOSTINGER operations, UAB\
 Švitrigailos str. 34\
 Vilnius 03230\
 Litauen\
 E-Mail: domains@hostinger.com
 
-**Auftragsverarbeitung**
-
+#### Auftragsverarbeitung
 Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes
 geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der
 gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren
@@ -80,7 +78,6 @@ Weisungen und unter Einhaltung der DSGVO verarbeitet.
 ## 3. Allgemeine Hinweise und Pflichtinformationen
 
 ### Datenschutz
-
 
 Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre
 personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie
@@ -135,7 +132,6 @@ zur Erfüllung einer rechtlichen Verpflichtung erforderlich sind auf Grundlage v
 Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f
 DSGVO erfolgen. Über die jeweils im Einzelfall einschlägigen Rechtsgrundlagen wird in den folgenden
 Absätzen dieser Datenschutzerklärung informiert.
-
 
 ### Empfänger von personenbezogenen Daten
 
@@ -228,5 +224,4 @@ Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, 
 Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht
 von Dritten mitgelesen werden.
 
-Quelle:
-https://www.e-recht24.de
+Quelle: https://www.e-recht24.de
