@@ -20,29 +20,7 @@ const en = {
 	imprint: {
 		title: 'Imprint | Jannik Portfolio',
 		description: 'Legal notice and mandatory operator information for this website.',
-		heading: 'Imprint',
-		providerTitle: 'Information according to Section 5 TMG',
-		providerNameLabel: 'Name:',
-		providerAddressLabel: 'Address:',
-		providerEmailLabel: 'Email:',
-		providerPhoneLabel: 'Phone:',
-		providerName: 'Jannik Seus',
-		providerAddress: 'Feldbergstrasse 10, 55118 Mainz, Germany',
-		providerEmail: 'jannik.seus@mailbox.org',
-		providerPhone: 'Available upon request',
-		responsibleTitle: 'Responsible for content according to Section 18 para. 2 MStV',
-		responsibleName: 'Jannik Seus',
-		disclaimerTitle: 'Liability for content',
-		disclaimerText:
-			'As a service provider, we are responsible for our own content on these pages under general law. However, we are not obligated to monitor transmitted or stored third-party information or investigate circumstances indicating unlawful activity.',
-		externalLinksTitle: 'Liability for links',
-		externalLinksText:
-			'Our website contains links to external websites of third parties over whose content we have no control. Therefore, we cannot assume any liability for this external content. The respective provider or operator of the linked page is always responsible for its content.',
-		ipRightsTitle: 'Copyright',
-		ipRightsText:
-			'The content and works on this website are subject to German copyright law. Reproduction, editing, distribution, and any form of exploitation outside the scope of copyright law require written permission from the author or creator.',
-		notice:
-			'This is an imprint for a personal portfolio website. Please adapt all information to your actual legal requirements before publication.'
+		heading: 'Imprint'
 	},
 	privacy: {
 		title: 'Privacy Policy | Jannik Portfolio',

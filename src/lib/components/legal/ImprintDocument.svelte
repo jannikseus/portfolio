@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { _, locale, resolveLocale } from '$lib/i18n';
-	import { privacyDocuments } from '$lib/content/legal/privacy';
+	import { imprintDocuments } from '$lib/content/legal/imprint';
 
 	const resolvedLocale = $derived(resolveLocale($locale));
-	const documentHtml = $derived(privacyDocuments[resolvedLocale]);
+	const documentHtml = $derived(imprintDocuments[resolvedLocale]);
 </script>
 
 <svelte:head>
-	<title>{$_('privacy.title')}</title>
-	<meta name="description" content={$_('privacy.description')} />
-	<meta property="og:title" content={$_('privacy.title')} />
-	<meta property="og:description" content={$_('privacy.description')} />
+	<title>{$_('imprint.title')}</title>
+	<meta name="description" content={$_('imprint.description')} />
+	<meta property="og:title" content={$_('imprint.title')} />
+	<meta property="og:description" content={$_('imprint.description')} />
 </svelte:head>
 
 <article class="max-w-3xl space-y-6">
-	<h1 class="text-3xl font-semibold tracking-tight">{$_('privacy.heading')}</h1>
+	<h1 class="text-3xl font-semibold tracking-tight">{$_('imprint.heading')}</h1>
 	<div class="legal-markdown text-muted-foreground">{@html documentHtml}</div>
 </article>
 

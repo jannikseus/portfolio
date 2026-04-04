@@ -20,29 +20,7 @@ const de = {
 	imprint: {
 		title: 'Impressum | Jannik Portfolio',
 		description: 'Anbieterkennzeichnung und Pflichtangaben fuer diese Website.',
-		heading: 'Impressum',
-		providerTitle: 'Angaben gemaess Section 5 TMG',
-		providerNameLabel: 'Name:',
-		providerAddressLabel: 'Anschrift:',
-		providerEmailLabel: 'E-Mail:',
-		providerPhoneLabel: 'Telefon:',
-		providerName: 'Jannik Seus',
-		providerAddress: 'Feldbergstrasse 10, 55118 Mainz, Deutschland',
-		providerEmail: 'jannik.seus@mailbox.org',
-		providerPhone: 'Auf Anfrage erhaeltlich',
-		responsibleTitle: 'Verantwortlich fuer den Inhalt nach Section 18 Abs. 2 MStV',
-		responsibleName: 'Jannik Seus',
-		disclaimerTitle: 'Haftung fuer Inhalte',
-		disclaimerText:
-			'Als Diensteanbieter sind wir fuer eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen.',
-		externalLinksTitle: 'Haftung fuer Links',
-		externalLinksText:
-			'Unser Angebot enthaelt Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb koennen wir fuer diese fremden Inhalte auch keine Gewaehr uebernehmen. Fuer die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.',
-		ipRightsTitle: 'Urheberrecht',
-		ipRightsText:
-			'Die durch uns erstellten Inhalte und Werke dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfaeltigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechtes beduerfen der schriftlichen Zustimmung des Autors oder Schoepfers.',
-		notice:
-			'Dies ist ein Impressum fuer eine persoenliche Portfolio-Website. Bitte passe alle Angaben vor der Veroeffentlichung an deine tatsaechlichen rechtlichen Anforderungen an.'
+		heading: 'Impressum'
 	},
 	privacy: {
 		title: 'Datenschutzerklarung | Jannik Portfolio',
