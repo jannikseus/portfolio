@@ -29,11 +29,11 @@ const en = {
     home: {
         title: 'Home | Jannik Portfolio',
         description:
-            'Backend developer skilled in Python, Java, and TypeScript, focused on scalable and AI-enhanced systems.',
-        roleLabel: 'Backend developer with ML focus',
-        headline: 'I build scalable backend systems and implement modular, AI-enhanced solutions.',
+            'Fullstack developer skilled in Python, Java, and TypeScript, focused on scalable and ML-enhanced systems.',
+        roleLabel: 'Student | Fullstack | Master@SCHOTT',
+        headline: 'Hi, this is Jannik!',
         intro:
-            'I focus on clean architecture, pragmatic delivery, and maintainable systems, with full-stack work and orchestration where it adds real value.',
+            'I love to build scalable, modular, ML-enhanced solutions. I focus on clean architecture, pragmatic delivery, and maintainable systems, with orchestration where it adds real value.',
         viewProjects: 'View projects',
         contact: 'Contact',
         featured: 'Featured work'
@@ -41,10 +41,10 @@ const en = {
     about: {
         title: 'About | Jannik Seus',
         description:
-            'About the engineer behind this portfolio and the software, platform, and ML work they care about.',
+            'About the engineer behind this portfolio and work they care about.',
         heading: 'About',
         paragraphOne:
-            'I like building systems that stay readable over time, whether they live in TypeScript interfaces, Python services, Java backends, or infrastructure around Docker and Kubernetes.',
+            'I like building systems that stay readable over time, whether they live in Python services, TypeScript interfaces, ML Systems, Java backends, or infrastructure around Docker and Kubernetes.',
         paragraphTwo:
 			'This portfolio keeps the content concise and production-focused so the main site stays easy to maintain.'
     },
@@ -60,7 +60,7 @@ const en = {
         description: 'Contact details for portfolio, product, and collaboration inquiries.',
         heading: 'Contact',
         intro:
-            'If you want to talk about software, infrastructure, or ML work, feel free to reach out via email or find me on GitHub and LinkedIn: https://github.com/Jannikseus and https://www.linkedin.com/in/jannik-seus.',
+            'If you want to talk about software, infrastructure, or Machine Learning, feel free to reach out via email or find me on GitHub and LinkedIn.',
         email: 'Email'
     },
     projects: {
@@ -68,14 +68,20 @@ const en = {
             portfolioWebsite: {
                 title: 'Portfolio Website',
                 description:
-                    'A fast, accessible personal website with focused content and lightweight interactions.',
-                role: 'Design and development'
+                    'A fast, accessible portfolio built with Svelte and SvelteKit, showcasing backend and ML projects.',
+                role: 'Full-stack design and development'
             },
-            developerToolingDashboard: {
-                title: 'Developer Tooling Dashboard',
+            gitOps: {
+                title: 'GitOps for several self-hosted applications',
                 description:
-                    'A dashboard for tracking builds, checks, and project metrics across multiple repositories.',
-                role: 'Frontend architecture and implementation'
+                    'A GitOps repository that is used to orchestrate multiple containers through argoCD, helm and kubernetes on my VPS (e.g. this website).',
+                role: 'Central application infrastructure and orchestration'
+            },
+            stravaLLMCoach: {
+                title: 'Strava LLM Running Coach',
+                description:
+                    'A Streamlit application integrated with Strava. A running coach as a chatbot that analyzes user data and helps creating a training plan.',
+                role: 'AI and Development'
             }
         }
     }

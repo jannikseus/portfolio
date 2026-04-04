@@ -14,11 +14,11 @@
 	<h1 class="text-3xl font-semibold tracking-tight">{$_('contact.heading')}</h1>
 	<p class="text-muted-foreground">{$_('contact.intro')}</p>
 	<div class="flex flex-wrap gap-3">
-		<Button href="mailto:hello@example.com">{$_('contact.email')}</Button>
-		<Button href="https://github.com" variant="outline" target="_blank" rel="noreferrer">
+		<Button href="mailto:jannik.seus@mailbox.org">{$_('contact.email')}</Button>
+		<Button href="https://github.com/jannikseus" variant="outline" target="_blank" rel="noreferrer">
 			GitHub
 		</Button>
-		<Button href="https://www.linkedin.com" variant="outline" target="_blank" rel="noreferrer">
+		<Button href="https://www.linkedin.com/in/jannik-seus" variant="outline" target="_blank" rel="noreferrer">
 			LinkedIn
 		</Button>
 	</div>

@@ -29,11 +29,11 @@ const de = {
     home: {
         title: 'Start | Jannik Seus',
         description:
-            'Backend-Entwickler mit Schwerpunkt auf Python, Java und TypeScript sowie skalierbaren, KI-gestützten Systemen.',
-        roleLabel: 'Backend-Entwickler mit ML-Fokus',
-        headline: 'Ich baue skalierbare Backend-Systeme und implementiere modulare, KI-gestützte Lösungen.',
+            'Fullstack-Entwickler mit Schwerpunkt auf Python, Java und TypeScript sowie skalierbaren, ML-gestützten Systemen.',
+        roleLabel: 'Student | Fullstack | Masterand@SCHOTT',
+        headline: 'Hi, Jannik hier!',
         intro:
-            'Ich arbeite mit klarer Architektur, pragmatischer Umsetzung und langfristig wartbaren Systemen; Full-Stack und Orchestrierung setze ich dort ein, wo es sinnvoll ist.',
+            'Ich baue gerne skalierbare, modulare, ML-gestützte Lösungen. Ich arbeite mit klarer Architektur, pragmatischer Umsetzung und wartbaren Systemen inkl. Orchestrierung, wo es Mehrwert bringt.',
         viewProjects: 'Projekte ansehen',
         contact: 'Kontakt',
         featured: 'Ausgewählte Arbeit'
@@ -41,10 +41,10 @@ const de = {
     about: {
         title: 'über mich | Jannik Seus',
         description:
-            'Informationen zu der Person hinter diesem Portfolio und zu Software-, Plattform- und ML-Arbeit.',
+            'Informationen zu der Person hinter diesem Portfolio und der Arbeit die ich so mache.',
         heading: 'über mich',
         paragraphOne:
-            'Ich baue gern Systeme, die langfristig lesbar bleiben, egal ob in TypeScript-Interfaces, Python-Services, Java-Backends oder in der Infrastruktur rund um Docker und Kubernetes.',
+            'Ich baue gern Systeme, die langfristig lesbar bleiben, egal ob in Python-Services, TypeScript-Interfaces, ML-Systemen, Java-Backends oder in der Infrastruktur rund um Docker und Kubernetes.',
         paragraphTwo:
 			'Dieses Portfolio bleibt bewusst kompakt und produktionsnah, damit die Hauptseite langfristig wartbar ist.'
     },
@@ -60,7 +60,7 @@ const de = {
         description: 'Kontaktinformationen für Portfolio-, Produkt- und Kollaborationsanfragen.',
         heading: 'Kontakt',
         intro:
-            'Wenn du über Software-, Infrastruktur- oder ML-Arbeit sprechen möchtest, melde dich gern per E-Mail oder finde mich auf GitHub und LinkedIn: https://github.com/Jannikseus und https://www.linkedin.com/in/jannik-seus.',
+            'Wenn du über Software-, Infrastruktur- oder Machine Learning sprechen möchtest, melde dich gern per E-Mail oder finde mich auf GitHub und LinkedIn: https://github.com/jannikseus und https://www.linkedin.com/in/jannik-seus.',
         email: 'E-Mail'
     },
     projects: {
@@ -68,14 +68,20 @@ const de = {
             portfolioWebsite: {
                 title: 'Portfolio Website',
                 description:
-                    'Eine schnelle, barrierefreie persönliche Website mit fokussierten Inhalten und leichten Interaktionen.',
-                role: 'Design und Entwicklung'
+                    'Ein schnelles, barrierefreies Portfolio mit Svelte und SvelteKit, das Backend- und ML-Projekte präsentiert.',
+                role: 'Full-Stack Design und Entwicklung'
             },
-            developerToolingDashboard: {
-                title: 'Developer Tooling Dashboard',
+            gitOps: {
+                title: 'GitOps für selbst gehostete Anwendungen',
                 description:
-                    'Ein Dashboard zum Verfolgen von Builds, Checks und Projektmetriken über mehrere Repositories.',
-                role: 'Frontend-Architektur und Implementierung'
+                    'Ein GitOps-Repository, das mehrere Container über ArgoCD, Helm und Kubernetes auf meinem VPS orchestriert (z.B. diese Website).',
+                role: 'Zentrale Infrastruktur und Orchestrierung'
+            },
+            stravaLLMCoach: {
+                title: 'Strava LLM Lauftrainer',
+                description:
+                    'Eine mit Strava integrierte Streamlit App. Ein Lauftrainer steht als Chatbot zur Verfügung, analysiert Nutzerdaten und hilft beim Erstellen eines Trainingsplans.',
+                role: 'KI und Software-Entwicklung'
             }
         }
     }
