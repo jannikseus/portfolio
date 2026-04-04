@@ -69,5 +69,9 @@
 
 	<footer class="mt-12 border-t pt-6 text-xs text-muted-foreground">
 		<p>{$_('layout.footer')}</p>
+		<div class="mt-2 flex flex-wrap gap-3">
+			<a class="underline underline-offset-4 hover:text-foreground" href="/imprint">{$_('layout.imprint')}</a>
+			<a class="underline underline-offset-4 hover:text-foreground" href="/privacy">{$_('layout.privacy')}</a>
+		</div>
 	</footer>
 </div>
