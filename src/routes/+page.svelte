@@ -34,10 +34,26 @@
 					<Card.Title>{$_(`${project.keyPrefix}.title`)}</Card.Title>
 					<Card.Description>{$_(`${project.keyPrefix}.description`)}</Card.Description>
 				</Card.Header>
-				<Card.Content class="flex flex-wrap gap-2">
-					{#each project.techStack as tech}
-						<Badge variant="secondary">{tech}</Badge>
-					{/each}
+				<Card.Content class="space-y-3">
+					<div class="flex flex-wrap gap-2">
+						{#each project.techStack as tech}
+							<Badge variant="secondary">{tech}</Badge>
+						{/each}
+					</div>
+					{#if project.links?.demo || project.links?.repo}
+						<div class="flex flex-wrap gap-2">
+							{#if project.links?.demo}
+								<Button href={project.links.demo} variant="outline" size="sm" target="_blank" rel="noreferrer">
+									Demo
+								</Button>
+							{/if}
+							{#if project.links?.repo}
+								<Button href={project.links.repo} variant="outline" size="sm" target="_blank" rel="noreferrer">
+									Repository
+								</Button>
+							{/if}
+						</div>
+					{/if}
 				</Card.Content>
 			</Card.Root>
 		{/each}

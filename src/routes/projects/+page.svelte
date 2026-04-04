@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { projects } from '$lib/data/projects';
 	import { _ } from '$lib/i18n';
@@ -30,6 +31,20 @@
 							<Badge variant="secondary">{tech}</Badge>
 						{/each}
 					</div>
+					{#if project.links?.demo || project.links?.repo}
+						<div class="flex flex-wrap gap-2 pt-2">
+							{#if project.links?.demo}
+								<Button href={project.links.demo} variant="outline" size="sm" target="_blank" rel="noreferrer">
+									Demo
+								</Button>
+							{/if}
+							{#if project.links?.repo}
+								<Button href={project.links.repo} variant="outline" size="sm" target="_blank" rel="noreferrer">
+									Repository
+								</Button>
+							{/if}
+						</div>
+					{/if}
 				</Card.Content>
 			</Card.Root>
 		{/each}

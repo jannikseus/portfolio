@@ -12,20 +12,27 @@ export const projects: Project[] = [
 	{
 		id: 'portfolio-website',
 		keyPrefix: 'projects.items.portfolioWebsite',
-		techStack: ['SvelteKit', 'TypeScript', 'Tailwind CSS', 'Bun'],
+		techStack: ['Svelte', 'TypeScript', 'Tailwind CSS', 'Bun'],
 		links: {
-			demo: '/',
-			repo: 'https://github.com/'
+			demo: 'https://jannikseus.tech',
+			repo: 'https://github.com/jannikseus/portfolio'
 		}
 	},
 	{
-		id: 'developer-tooling-dashboard',
-		keyPrefix: 'projects.items.developerToolingDashboard',
-		techStack: ['Svelte', 'Node.js', 'SQLite']
+		id: 'gitops',
+		keyPrefix: 'projects.items.gitOps',
+		techStack: ['Kubernetes', 'Helm', 'ArgoCD'],
+		links: {
+			demo: '/',
+			repo: 'https://github.com/jannikseus/gitops-homelab'
+		}
 	},
 	{
-		id: 'interaction-lab-experiments',
-		keyPrefix: 'projects.items.interactionLabExperiments',
-		techStack: ['SvelteKit', 'Motion One']
+		id: 'strava-llm-coach',
+		keyPrefix: 'projects.items.stravaLLMCoach',
+		techStack: ['Python', 'Streamlit', 'Pydantic'],
+		links: {
+			repo: 'https://github.com/jannikseus/pacepilot'
+		}
 	}
 ];
