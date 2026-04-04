@@ -16,8 +16,7 @@
 		{ href: '/', labelKey: 'nav.home' },
 		{ href: '/about', labelKey: 'nav.about' },
 		{ href: '/projects', labelKey: 'nav.projects' },
-		{ href: '/contact', labelKey: 'nav.contact' },
-		{ href: '/lab', labelKey: 'nav.lab' }
+		{ href: '/contact', labelKey: 'nav.contact' }
 	] as const;
 
 	async function switchLanguage(nextLocale: SupportedLocale) {

@@ -15,7 +15,6 @@ Personal portfolio scaffold built with SvelteKit, Bun, Tailwind CSS, and shadcn-
 - `/about`
 - `/projects`
 - `/contact`
-- `/lab` experimental area
 
 ## Development
 

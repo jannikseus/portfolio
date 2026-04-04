@@ -22,10 +22,5 @@ export const projects: Project[] = [
 		id: 'developer-tooling-dashboard',
 		keyPrefix: 'projects.items.developerToolingDashboard',
 		techStack: ['Svelte', 'Node.js', 'SQLite']
-	},
-	{
-		id: 'interaction-lab-experiments',
-		keyPrefix: 'projects.items.interactionLabExperiments',
-		techStack: ['SvelteKit', 'Motion One']
 	}
 ];
