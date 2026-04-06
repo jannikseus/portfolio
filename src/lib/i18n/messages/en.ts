@@ -3,13 +3,16 @@ const en = {
         siteName: 'Jannik Seus',
         languageLabel: 'Language',
         langEnglish: 'EN',
-        langGerman: 'DE'
+		langGerman: 'DE',
+		openMenu: 'Menu',
+		closeMenu: 'Close'
     },
     nav: {
         home: 'Home',
         about: 'About',
         projects: 'Projects',
-		contact: 'Contact'
+		contact: 'Contact',
+		mainNavigationAria: 'Main navigation'
     },
     layout: {
         footer: 'Built with Svelte, Bun, Tailwind, and shadcn-svelte.',

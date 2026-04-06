@@ -3,13 +3,16 @@ const de = {
         siteName: 'Jannik Seus',
         languageLabel: 'Sprache',
         langEnglish: 'EN',
-        langGerman: 'DE'
+		langGerman: 'DE',
+		openMenu: 'Menü',
+		closeMenu: 'Schliessen'
     },
     nav: {
         home: 'Start',
         about: 'über mich',
         projects: 'Projekte',
-		contact: 'Kontakt'
+		contact: 'Kontakt',
+		mainNavigationAria: 'Hauptnavigation'
     },
     layout: {
         footer: 'Erstellt mit Svelte, Bun, Tailwind und shadcn-svelte.',
@@ -60,7 +63,7 @@ const de = {
         description: 'Kontaktinformationen für Portfolio-, Produkt- und Kollaborationsanfragen.',
         heading: 'Kontakt',
         intro:
-            'Wenn du über Software-, Infrastruktur- oder Machine Learning sprechen möchtest, melde dich gern per E-Mail oder finde mich auf GitHub und LinkedIn: https://github.com/jannikseus und https://www.linkedin.com/in/jannik-seus.',
+            'Wenn du über Software-, Infrastruktur- oder Machine Learning sprechen möchtest, melde dich gern per E-Mail oder finde mich auf GitHub und LinkedIn.',
         email: 'E-Mail'
     },
     projects: {
