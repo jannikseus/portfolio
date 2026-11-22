@@ -3,6 +3,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Button } from '$lib/components/ui/button';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	import type { LayoutData } from './$types';
 	import { _, changeLocale, initI18n, locale, type SupportedLocale } from '$lib/i18n';
 
@@ -17,6 +18,7 @@
 		{ href: '/', labelKey: 'nav.home' },
 		{ href: '/about', labelKey: 'nav.about' },
 		{ href: '/projects', labelKey: 'nav.projects' },
+		{ href: '/blog', labelKey: 'nav.blog' },
 		{ href: '/contact', labelKey: 'nav.contact' }
 	] as const;
 
@@ -99,6 +101,7 @@
 					{$_('common.langGerman')}
 				</Button>
 			</div>
+			<ThemeSwitcher />
 		</div>
 
 		{#if mobileMenuOpen}
@@ -150,6 +153,7 @@
 								{$_('common.langGerman')}
 							</Button>
 						</div>
+						<ThemeSwitcher />
 					</div>
 					<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-col gap-1 border-t pt-3">
 						{#each navItems as item}

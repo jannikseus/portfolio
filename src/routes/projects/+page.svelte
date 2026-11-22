@@ -26,6 +26,12 @@
 				</Card.Header>
 				<Card.Content class="space-y-3">
 					<p><span class="font-medium">{$_('projectsPage.rolePrefix')}</span> {$_(`${project.keyPrefix}.role`)}</p>
+					{#each project.sections as section}
+						<p>
+							<span class="font-medium">{$_(`projectsPage.${section}`)}:</span>
+							{$_(`${project.keyPrefix}.${section}`)}
+						</p>
+					{/each}
 					<div class="flex flex-wrap gap-2">
 						{#each project.techStack as tech}
 							<Badge variant="secondary">{tech}</Badge>

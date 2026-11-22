@@ -1,0 +1,137 @@
+# Aufgabe: Entwicklerportfolio gezielt verbessern
+
+Überarbeite meine bestehende Portfolio-Website unter **jannikseus.tech** mit dem Ziel, sie als professionelles Portfolio für Backend Software Engineering, Machine Learning und Infrastructure Engineering zu positionieren.
+
+## 1. Ausgangslage und Zielsetzung
+
+Die Website soll meine technischen Fähigkeiten, berufliche Erfahrung und ausgewählte Projekte überzeugend präsentieren.
+
+Meine Positionierung:
+- Backend Software Engineering
+- Machine Learning und Computer Vision
+- Softwarearchitektur und Infrastructure Engineering
+- Python, FastAPI, TypeScript, Kubernetes und GitOps
+
+Die Zielgruppe sind technische Recruiter, Engineering Leads und potenzielle Arbeitgeber.
+
+Die Website soll innerhalb von 1–2 Minuten einen präzisen Eindruck meiner technischen Fähigkeiten vermitteln.
+
+## 2. Bestehendes Design erhalten
+
+Analysiere zunächst die bestehende Website und ihre Struktur.
+
+Wichtige Vorgaben:
+- Bestehendes visuelles Konzept und Branding weitgehend erhalten.
+- Keine vollständige Neuentwicklung oder unnötige Designänderungen.
+- Minimalistisches, modernes und professionelles Erscheinungsbild.
+- Keine überflüssigen Animationen oder dekorativen Elemente.
+- Gute Lesbarkeit und klare visuelle Hierarchie.
+- Responsive Design für Desktop, Tablet und Mobile.
+- Bestehende technische Architektur und verwendete Frameworks berücksichtigen.
+
+Fokussiere dich auf inhaltliche Verbesserungen und eine bessere Präsentation der Projekte.
+
+## 3. Positionierung verbessern
+
+Überarbeite die berufliche Positionierung.
+
+Bevorzugte Richtung:
+
+**Backend Software Engineer | Machine Learning & Infrastructure**
+
+Vermeide eine zu allgemeine Positionierung als Full-Stack-Entwickler.
+
+Die Texte sollen:
+- Präzise und technisch fundiert sein.
+- Selbstbewusst, aber nicht überheblich wirken.
+- Keine unbelegten Kompetenzbehauptungen enthalten.
+- Nicht wie generische KI-generierte Marketingtexte klingen.
+
+## 4. Projektpräsentation ausbauen
+
+Überarbeite die bestehende Projektübersicht und entwickle eine einheitliche Struktur für aussagekräftige Projektbeschreibungen.
+
+Für jedes Projekt sollen folgende Aspekte berücksichtigt werden:
+
+1. **Overview:** Was ist das Projekt und welches Problem löst es?
+2. **Technical Approach:** Wie wurde es technisch umgesetzt?
+3. **Architecture:** Welche Komponenten und Schnittstellen gibt es?
+4. **Key Technologies:** Welche Technologien wurden verwendet und warum?
+5. **My Contribution:** Welche konkreten Aufgaben und Entscheidungen habe ich übernommen?
+6. **Results:** Welche Ergebnisse oder technischen Erkenntnisse wurden erzielt?
+
+Verwende nur Informationen, die im Repository, in der bestehenden Website oder in vorhandenen Projektdokumentationen tatsächlich belegt sind.
+
+Erfinde keine Features, Ergebnisse, Kennzahlen oder technischen Details.
+
+### Bestehende Projekte
+
+Behalte zunächst diese Projekte bei:
+
+- Portfolio Website
+- GitOps Infrastructure / Self-hosted Applications
+- Strava LLM Running Coach
+
+Prüfe, welche Informationen in den vorhandenen Repositories verfügbar sind und nutze sie zur Verbesserung der Beschreibungen.
+
+### Neues Projekt: Industrial Data Drift Detection
+
+Bereite zusätzlich ein Projekt zu meiner Masterarbeit vor:
+
+**Data Drift Detection in Industrial Image Processing Systems**
+
+Kontext:
+- Entwicklung eines Evaluationsframeworks zur Untersuchung von Data-Drift-Detektoren.
+- Fokus auf industrielle Computer-Vision-Systeme.
+- Vergleich verschiedener statistischer und ML-basierter Drift-Detektoren.
+- Experimentelle Evaluation mit Referenzdaten, synthetischen Bildkorruptionen und unbekannten Live-Daten.
+- Reproduzierbare Experimente und Ergebnisverwaltung.
+
+Wichtig:
+- Keine vertraulichen SCHOTT-Produktionsdaten oder Produktionsbilder verwenden.
+- Keine internen Unternehmensinformationen veröffentlichen.
+- Die Darstellung soll sich auf die wissenschaftliche Methodik und die selbst entwickelte technische Lösung konzentrieren.
+- Keine Ergebnisse erfinden.
+
+## 5. Technische Qualität
+
+Prüfe und verbessere bei Bedarf:
+
+- Semantisches HTML
+- Accessibility und Tastaturbedienbarkeit
+- SEO und Meta-Descriptions
+- Open Graph Metadata
+- Responsive Layouts
+- Performance und Ladezeiten
+- Bildoptimierung
+- Konsistente Navigation
+- Funktionierende externe Links
+
+Vermeide unnötige Dependencies und komplexe Abstraktionen.
+
+## 6. Umsetzung
+
+Arbeite schrittweise:
+
+1. Analysiere zunächst die bestehende Website und ihre Komponenten.
+2. Untersuche die vorhandenen Projekt-Repositories und Dokumentationen.
+3. Identifiziere konkrete Verbesserungsmöglichkeiten.
+4. Entwickle einen kurzen Umsetzungsplan.
+5. Implementiere die Verbesserungen direkt im bestehenden Projekt.
+6. Prüfe die Website auf responsive Darstellung und funktionierende Navigation.
+7. Führe vorhandene Tests und relevante Qualitätschecks aus.
+
+Ändere keine Inhalte, die du nicht ausreichend verifizieren kannst. Markiere fehlende Informationen stattdessen als offene Punkte.
+
+## 7. Qualitätsmaßstab
+
+Das Endergebnis soll wie das Portfolio eines technisch versierten Software Engineers wirken, nicht wie eine Template-basierte Entwickler-Visitenkarte.
+
+Prioritäten:
+1. Technische Kompetenz nachvollziehbar vermitteln.
+2. Relevante Projekte überzeugend präsentieren.
+3. Klare berufliche Positionierung.
+4. Professionelles und konsistentes Design.
+5. Gute Performance und Accessibility.
+
+**Wichtig: Qualität vor Umfang. Lieber drei überzeugende Projektbeschreibungen als zehn oberflächliche Einträge.**

@@ -15,6 +15,7 @@ Personal portfolio scaffold built with SvelteKit, Bun, Tailwind CSS, and shadcn-
 - `/about`
 - `/projects`
 - `/contact`
+- `/blog` and `/blog/<slug>`
 
 ## Development
 
@@ -58,4 +59,5 @@ image: ghcr.io/<owner>/<repo>:v0.0.5
 
 - Language switch supports `en` and `de`
 - Translations live in `src/lib/i18n/messages/`
+- Blog posts are Markdown files with frontmatter in `src/lib/content/blog/`. Add one file per locale using `<slug>.<locale>.md`.
 - Locale is stored in a `locale` cookie
