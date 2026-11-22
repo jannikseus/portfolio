@@ -40,10 +40,15 @@ const en = {
         title: 'Home | Jannik Portfolio',
         description:
             'Backend software engineer with experience in machine learning, computer vision, and infrastructure engineering.',
-        roleLabel: 'Backend Software Engineer | Machine Learning | Infrastructure',
+        roleLabel: 'Open to work',
         headline: 'Hi, this is Jannik!',
+        statusLabel: 'Open to work',
+        statusDetail: 'Backend · ML · Infrastructure',
+        terminalRunAria: 'Run terminal easter egg',
+        terminalResetAria: 'Reset terminal easter egg',
+        terminalComplete: 'system ready',
         intro:
-            'I build backend systems, ML applications, and infrastructure that stays readable and maintainable.',
+            'I build backend systems, ML applications, and infrastructure.',
         viewProjects: 'View projects',
         viewAllProjects: 'View all projects',
         contact: 'Contact',

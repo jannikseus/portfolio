@@ -52,7 +52,16 @@
 
 <div class="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-6 sm:px-6 lg:px-8">
 	<header class="sticky top-0 z-30 mb-8 flex flex-col gap-4 border-b bg-background/95 py-3 backdrop-blur sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
-		<a class="hidden font-mono text-sm font-semibold tracking-wide sm:block" href="/">jannikseus.tech</a>
+		<div class="hidden items-center gap-3 sm:flex">
+			<a class="font-mono text-sm font-semibold tracking-wide" href="/">jannikseus.tech</a>
+			<div
+				class="technical-label flex items-center gap-2 text-xs font-medium text-foreground"
+				aria-label={`${$_('home.statusLabel')}: ${$_('home.statusDetail')}`}
+			>
+				<span class="size-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
+				<span>{$_('home.statusLabel')}</span>
+			</div>
+		</div>
 		<div class="flex items-center gap-3 sm:hidden">
 			<Button
 				type="button"
@@ -163,6 +172,10 @@
 						</div>
 						<ThemeSwitcher />
 					</div>
+					<div class="technical-label flex items-center gap-2 text-xs text-muted-foreground">
+						<span class="size-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+						<span class="text-foreground">{$_('home.statusLabel')}</span>
+					</div>
 					<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-col gap-1 border-t pt-3">
 						{#each navItems as item}
 							<Button
@@ -196,15 +209,39 @@
 	<footer class="mt-12 border-t pt-6 text-xs text-muted-foreground">
 		<div class="flex flex-wrap items-center justify-between gap-3">
 			<p>{$_('layout.footer')}</p>
-			<a
-				class="font-mono underline underline-offset-4 hover:text-foreground"
-				href={`https://github.com/jannikseus/portfolio/releases/tag/v${packageJson.version}`}
-				target="_blank"
-				rel="noreferrer"
-				aria-label={`Website version ${packageJson.version}`}
-			>
-				v{packageJson.version}
-			</a>
+			<div class="flex items-center gap-3">
+				<a
+					class="font-mono underline underline-offset-4 hover:text-foreground"
+					href={`https://github.com/jannikseus/portfolio/releases/tag/v${packageJson.version}`}
+					target="_blank"
+					rel="noreferrer"
+					aria-label={`Website version ${packageJson.version}`}
+				>
+					v{packageJson.version}
+				</a>
+				<a
+					class="inline-flex size-7 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+					href="https://github.com/jannikseus/portfolio"
+					target="_blank"
+					rel="noreferrer"
+					aria-label="GitHub repository for this website"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="size-4"
+						aria-hidden="true"
+					>
+						<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 3.8 5 5 0 0 0 19.3 0S18.2-.4 15 1.5a13.4 13.4 0 0 0-7 0C4.8-.4 3.7 0 3.7 0a5 5 0 0 0-.1 3.8A5.4 5.4 0 0 0 2.2 7.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4" />
+						<path d="M8 19c-3 .9-3-1.5-4-2" />
+					</svg>
+				</a>
+			</div>
 		</div>
 		<div class="mt-2 flex flex-wrap gap-3">
 			<a class="underline underline-offset-4 hover:text-foreground" href="/imprint">{$_('layout.imprint')}</a>

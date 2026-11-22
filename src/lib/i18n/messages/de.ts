@@ -40,10 +40,15 @@ const de = {
         title: 'Start | Jannik Seus',
         description:
             'Backend Software Engineer mit Erfahrung in Machine Learning, Computer Vision und Infrastructure Engineering.',
-        roleLabel: 'Backend Software Engineer | Machine Learning | Infrastructure',
+        roleLabel: 'Open to work',
         headline: 'Hi, Jannik hier!',
+        statusLabel: 'Open to work',
+        statusDetail: 'Backend · ML · Infrastruktur',
+        terminalRunAria: 'Terminal-Easter-Egg ausführen',
+        terminalResetAria: 'Terminal-Easter-Egg zurücksetzen',
+        terminalComplete: 'System bereit',
         intro:
-            'Ich entwickle Backend-Systeme, ML-Anwendungen und Infrastruktur, die wartbar und nachvollziehbar bleibt.',
+            'Ich entwickle Backend-Systeme, ML-Anwendungen und Infrastruktur.',
         viewProjects: 'Projekte ansehen',
         viewAllProjects: 'Alle Projekte ansehen',
         contact: 'Kontakt',
