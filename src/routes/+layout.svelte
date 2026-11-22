@@ -1,11 +1,12 @@
 <script lang="ts">
 	import './layout.css';
 	import { fade, fly } from 'svelte/transition';
-	import favicon from '$lib/assets/favicon.svg';
+	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	import type { LayoutData } from './$types';
 	import { _, changeLocale, initI18n, locale, type SupportedLocale } from '$lib/i18n';
+	import packageJson from '../../package.json';
 
 	let { children, data }: { children: import('svelte').Snippet; data: LayoutData } = $props();
 	const localeFromData = $derived(data.locale);
@@ -14,15 +15,48 @@
 		initI18n(localeFromData);
 	});
 
-	const navItems = [
-		{ href: '/', labelKey: 'nav.home' },
-		{ href: '/about', labelKey: 'nav.about' },
-		{ href: '/projects', labelKey: 'nav.projects' },
-		{ href: '/blog', labelKey: 'nav.blog' },
-		{ href: '/contact', labelKey: 'nav.contact' }
-	] as const;
-
 	let mobileMenuOpen = $state(false);
+	let activeSection = $state('home');
+	let sectionObserver: IntersectionObserver | undefined;
+
+	const isHomePage = $derived(page.url.pathname === '/');
+
+	const navItems = $derived([
+		{ href: isHomePage ? '#home' : '/', labelKey: 'nav.home', section: 'home' },
+		{ href: isHomePage ? '#about' : '/about', labelKey: 'nav.about', section: 'about' },
+		{ href: isHomePage ? '#projects' : '/projects', labelKey: 'nav.projects', section: 'projects' },
+		{ href: isHomePage ? '#blog' : '/blog', labelKey: 'nav.blog', section: 'blog' },
+		{ href: isHomePage ? '#contact' : '/contact', labelKey: 'nav.contact', section: 'contact' }
+	]);
+
+	$effect(() => {
+		if (!isHomePage || typeof window === 'undefined') return;
+
+		const frame = requestAnimationFrame(() => {
+			const sections = ['home', 'about', 'projects', 'blog', 'contact']
+				.map((id) => document.getElementById(id))
+				.filter((section): section is HTMLElement => section !== null);
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					const visible = entries
+						.filter((entry) => entry.isIntersecting)
+						.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+					if (visible) activeSection = visible.target.id;
+				},
+				{ rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.4, 0.7] }
+			);
+
+			sections.forEach((section) => observer.observe(section));
+			sectionObserver = observer;
+		});
+
+		return () => {
+			cancelAnimationFrame(frame);
+			sectionObserver?.disconnect();
+			sectionObserver = undefined;
+		};
+	});
 
 	async function switchLanguage(nextLocale: SupportedLocale) {
 		await changeLocale(nextLocale);
@@ -42,7 +76,6 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
 	<meta property="og:site_name" content={$_('common.siteName')} />
 	<meta property="og:type" content="website" />
 </svelte:head>
@@ -50,8 +83,8 @@
 <svelte:window onkeydown={(event) => mobileMenuOpen && event.key === 'Escape' && closeMobileMenu()} />
 
 <div class="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-6 sm:px-6 lg:px-8">
-	<header class="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
-		<a class="hidden text-sm font-semibold tracking-wide sm:block" href="/">jannik.dev</a>
+	<header class="sticky top-0 z-30 mb-8 flex flex-col gap-4 border-b bg-background/95 py-3 backdrop-blur sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
+		<a class="hidden font-mono text-sm font-semibold tracking-wide sm:block" href="/">jannikseus.tech</a>
 		<div class="flex items-center gap-3 sm:hidden">
 			<Button
 				type="button"
@@ -75,12 +108,20 @@
 					</span>
 				{/if}
 			</Button>
-			<a class="text-sm font-semibold tracking-wide" href="/">jannik.dev</a>
+			<a class="font-mono text-sm font-semibold tracking-wide" href="/">jannikseus.tech</a>
 		</div>
 		<div class="hidden flex-wrap items-center gap-2 sm:flex">
 			<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-wrap gap-2">
 				{#each navItems as item}
-					<Button href={item.href} variant="ghost" size="sm">{$_(item.labelKey)}</Button>
+					<Button
+						href={item.href}
+						variant={isHomePage ? activeSection === item.section ? 'outline' : 'ghost' : page.url.pathname === item.href ? 'outline' : 'ghost'}
+						size="sm"
+						class={isHomePage ? activeSection === item.section ? 'font-mono border-foreground/40 bg-muted text-foreground' : 'font-mono' : page.url.pathname === item.href ? 'font-mono border-foreground/40 bg-muted text-foreground' : 'font-mono'}
+						aria-current={isHomePage ? activeSection === item.section ? 'location' : undefined : page.url.pathname === item.href ? 'page' : undefined}
+					>
+						{$_(item.labelKey)}
+					</Button>
 				{/each}
 			</nav>
 			<div class="ml-1 flex items-center gap-1" aria-label={$_('common.languageLabel')}>
@@ -122,10 +163,10 @@
 					<div class="flex items-center justify-between gap-2">
 						<a
 							href="/"
-							class="text-sm font-semibold tracking-wide"
+							class="font-mono text-sm font-semibold tracking-wide"
 							onclick={closeMobileMenu}
 						>
-							jannik.dev
+							jannikseus.tech
 						</a>
 						<div class="flex items-center gap-1" aria-label={$_('common.languageLabel')}>
 							<Button
@@ -157,7 +198,14 @@
 					</div>
 					<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-col gap-1 border-t pt-3">
 						{#each navItems as item}
-							<Button href={item.href} variant="ghost" size="sm" class="w-full justify-start" onclick={closeMobileMenu}>
+							<Button
+								href={item.href}
+								variant={isHomePage ? activeSection === item.section ? 'outline' : 'ghost' : page.url.pathname === item.href ? 'outline' : 'ghost'}
+								size="sm"
+								class={isHomePage ? activeSection === item.section ? 'w-full justify-start font-mono border-foreground/40 bg-muted text-foreground' : 'w-full justify-start font-mono' : page.url.pathname === item.href ? 'w-full justify-start font-mono border-foreground/40 bg-muted text-foreground' : 'w-full justify-start font-mono'}
+								onclick={closeMobileMenu}
+								aria-current={isHomePage ? activeSection === item.section ? 'location' : undefined : page.url.pathname === item.href ? 'page' : undefined}
+							>
 								{$_(item.labelKey)}
 							</Button>
 						{/each}
@@ -180,7 +228,18 @@
 	<main class="flex-1">{@render children()}</main>
 
 	<footer class="mt-12 border-t pt-6 text-xs text-muted-foreground">
-		<p>{$_('layout.footer')}</p>
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<p>{$_('layout.footer')}</p>
+			<a
+				class="font-mono underline underline-offset-4 hover:text-foreground"
+				href={`https://github.com/jannikseus/portfolio/releases/tag/v${packageJson.version}`}
+				target="_blank"
+				rel="noreferrer"
+				aria-label={`Website version ${packageJson.version}`}
+			>
+				v{packageJson.version}
+			</a>
+		</div>
 		<div class="mt-2 flex flex-wrap gap-3">
 			<a class="underline underline-offset-4 hover:text-foreground" href="/imprint">{$_('layout.imprint')}</a>
 			<a class="underline underline-offset-4 hover:text-foreground" href="/privacy">{$_('layout.privacy')}</a>

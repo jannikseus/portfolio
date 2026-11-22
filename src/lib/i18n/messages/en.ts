@@ -45,8 +45,23 @@ const en = {
         intro:
             'I build scalable, modular systems with clear architecture, pragmatic delivery, and maintainable infrastructure.',
         viewProjects: 'View projects',
+        viewAllProjects: 'View all projects',
         contact: 'Contact',
-        featured: 'Featured work'
+        featured: 'Featured work',
+        aboutHeading: 'About',
+        aboutText: 'Backend-oriented engineer working across machine learning, computer vision, backend systems, and infrastructure.',
+        aboutMore: 'More about me',
+        viewAllPosts: 'More posts',
+        focusHeading: 'Technical focus',
+        focusIntro: 'Three areas inform how I design and operate software systems.',
+        focusBackendHeading: 'Backend engineering',
+        focusBackendText: 'Maintainable services, clear interfaces, typed data models, and pragmatic architecture.',
+        focusMlHeading: 'Machine learning',
+        focusMlText: 'ML-enhanced software and computer-vision systems with reproducible evaluation.',
+        focusInfrastructureHeading: 'Infrastructure',
+        focusInfrastructureText: 'Containerized services, Kubernetes, GitOps, and observable deployments.',
+        contactHeading: 'Let us talk',
+        contactIntro: 'For software, infrastructure, or machine-learning topics.'
     },
     about: {
         title: 'About | Jannik Seus',
@@ -100,20 +115,20 @@ const en = {
             gitOps: {
                 title: 'GitOps for several self-hosted applications',
                 description:
-                    'A GitOps repository that is used to orchestrate multiple containers through argoCD, helm and kubernetes on my VPS (e.g. this website).',
+                    'Declarative deployment of self-hosted applications with ArgoCD, Helm, and Kubernetes on a VPS.',
                 role: 'Infrastructure and orchestration',
-                overview: 'GitOps for self-hosted applications with declarative delivery.',
-                technicalApproach: 'Containers are described with Helm and Kubernetes and synchronized from Git through ArgoCD.',
-                architecture: 'The Git repository is the configuration source while ArgoCD synchronizes the desired state into the cluster.'
+                overview: 'A GitOps setup for reproducibly operating self-hosted containers.',
+                technicalApproach: 'Application manifests are described with Helm and Kubernetes and reconciled from Git with ArgoCD.',
+                architecture: 'Git defines the desired state; ArgoCD detects changes and synchronizes them into the cluster.'
             },
             stravaLLMCoach: {
                 title: 'Strava LLM Running Coach',
                 description:
-                    'A Streamlit application integrated with Strava. A running coach as a chatbot that analyzes user data and helps creating a training plan.',
+                    'A Streamlit coaching application that combines Strava activity data with an LLM-based running coach.',
                 role: 'AI and software development',
-                overview: 'A Strava-integrated application offering a running-focused chatbot.',
-                technicalApproach: 'The Streamlit application processes user data and uses Pydantic for typed data models.',
-                architecture: 'Strava data, application logic, and the chat interface are connected in a compact Python application.'
+                overview: 'A conversational running coach that uses training history and structured coaching knowledge.',
+                technicalApproach: 'Strava data is loaded through OAuth and exposed to LangChain/LangGraph workflows backed by OpenAI. The Streamlit interface presents plans and chat responses.',
+                architecture: 'Strava API data flows into the coaching logic, where user context and Markdown-based knowledge inform LangChain tool calls and generated recommendations.'
             },
             industrialDataDrift: {
                 title: 'Data Drift Detection in Industrial Image Processing Systems',

@@ -124,6 +124,7 @@
 		@apply bg-background text-foreground;
 	}
 	html {
-		@apply font-mono;
+		font-family: Helvetica, Arial, sans-serif;
+		scroll-behavior: smooth;
 	}
 }

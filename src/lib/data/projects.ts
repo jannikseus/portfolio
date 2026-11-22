@@ -3,6 +3,7 @@ export type Project = {
 	keyPrefix: `projects.items.${string}`;
 	techStack: string[];
 	sections: ('overview' | 'technicalApproach' | 'architecture' | 'results')[];
+	featured: boolean;
 	links?: {
 		demo?: string;
 		repo?: string;
@@ -15,6 +16,7 @@ export const projects: Project[] = [
 		keyPrefix: 'projects.items.portfolioWebsite',
 		techStack: ['Svelte', 'TypeScript', 'Tailwind CSS', 'Bun'],
 		sections: ['overview', 'technicalApproach', 'architecture'],
+		featured: false,
 		links: {
 			demo: 'https://jannikseus.tech',
 			repo: 'https://github.com/jannikseus/portfolio'
@@ -25,6 +27,7 @@ export const projects: Project[] = [
 		keyPrefix: 'projects.items.gitOps',
 		techStack: ['Kubernetes', 'Helm', 'ArgoCD'],
 		sections: ['overview', 'technicalApproach', 'architecture'],
+		featured: true,
 		links: {
 			demo: '/',
 			repo: 'https://github.com/jannikseus/gitops-homelab'
@@ -33,8 +36,9 @@ export const projects: Project[] = [
 	{
 		id: 'strava-llm-coach',
 		keyPrefix: 'projects.items.stravaLLMCoach',
-		techStack: ['Python', 'Streamlit', 'Pydantic'],
+		techStack: ['Python', 'Streamlit', 'LangChain', 'LangGraph', 'OpenAI'],
 		sections: ['overview', 'technicalApproach'],
+		featured: true,
 		links: {
 			repo: 'https://github.com/jannikseus/pacepilot'
 		}
@@ -43,6 +47,7 @@ export const projects: Project[] = [
 		id: 'industrial-data-drift-detection',
 		keyPrefix: 'projects.items.industrialDataDrift',
 		techStack: ['Python', 'Machine Learning', 'Computer Vision'],
-		sections: ['overview', 'technicalApproach', 'architecture']
+		sections: ['overview', 'technicalApproach', 'architecture'],
+		featured: true
 	}
 ];
