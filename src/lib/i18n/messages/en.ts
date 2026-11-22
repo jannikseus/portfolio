@@ -43,7 +43,7 @@ const en = {
         roleLabel: 'Backend Software Engineer | Machine Learning | Infrastructure',
         headline: 'Hi, this is Jannik!',
         intro:
-            'I build scalable, modular systems with clear architecture, pragmatic delivery, and maintainable infrastructure.',
+            'I build backend systems, ML applications, and infrastructure that stays readable and maintainable.',
         viewProjects: 'View projects',
         viewAllProjects: 'View all projects',
         contact: 'Contact',
@@ -53,15 +53,15 @@ const en = {
         aboutMore: 'More about me',
         viewAllPosts: 'More posts',
         focusHeading: 'Technical focus',
-        focusIntro: 'Three areas inform how I design and operate software systems.',
+        focusIntro: 'I work across these three areas.',
         focusBackendHeading: 'Backend engineering',
-        focusBackendText: 'Maintainable services, clear interfaces, typed data models, and pragmatic architecture.',
+        focusBackendText: 'Maintainable services, clear interfaces, and pragmatic architecture.',
         focusMlHeading: 'Machine learning',
-        focusMlText: 'ML-enhanced software and computer-vision systems with reproducible evaluation.',
+        focusMlText: 'ML applications and computer vision, from experiments to useful systems.',
         focusInfrastructureHeading: 'Infrastructure',
-        focusInfrastructureText: 'Containerized services, Kubernetes, GitOps, and observable deployments.',
+        focusInfrastructureText: 'Containers, Kubernetes, GitOps, and deployment workflows.',
         contactHeading: 'Let us talk',
-        contactIntro: 'For software, infrastructure, or machine-learning topics.'
+        contactIntro: 'About software, infrastructure, or machine learning.'
     },
     about: {
         title: 'About | Jannik Seus',
@@ -115,7 +115,7 @@ const en = {
             gitOps: {
                 title: 'GitOps for several self-hosted applications',
                 description:
-                    'Declarative deployment of self-hosted applications with ArgoCD, Helm, and Kubernetes on a VPS.',
+                    'ArgoCD, Helm, and Kubernetes deployment for self-hosted applications on a VPS.',
                 role: 'Infrastructure and orchestration',
                 overview: 'A GitOps setup for reproducibly operating self-hosted containers.',
                 technicalApproach: 'Application manifests are described with Helm and Kubernetes and reconciled from Git with ArgoCD.',
@@ -124,7 +124,7 @@ const en = {
             stravaLLMCoach: {
                 title: 'Strava LLM Running Coach',
                 description:
-                    'A Streamlit coaching application that combines Strava activity data with an LLM-based running coach.',
+                    'Strava activity data combined with an LLM-based running coach in Streamlit.',
                 role: 'AI and software development',
                 overview: 'A conversational running coach that uses training history and structured coaching knowledge.',
                 technicalApproach: 'Strava data is loaded through OAuth and exposed to LangChain/LangGraph workflows backed by OpenAI. The Streamlit interface presents plans and chat responses.',
@@ -132,7 +132,7 @@ const en = {
             },
             industrialDataDrift: {
                 title: 'Data Drift Detection in Industrial Image Processing Systems',
-                description: 'An evaluation framework for investigating data-drift detectors in industrial image processing.',
+                description: 'An evaluation framework for data-drift detectors in industrial computer vision.',
                 role: 'Research evaluation and framework development',
                 overview: 'Statistical and ML-based drift detectors are compared for industrial computer-vision systems.',
                 technicalApproach: 'Reproducible experiments use reference data, synthetic image corruptions, and unknown live data.',

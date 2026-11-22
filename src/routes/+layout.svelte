@@ -16,47 +16,15 @@
 	});
 
 	let mobileMenuOpen = $state(false);
-	let activeSection = $state('home');
-	let sectionObserver: IntersectionObserver | undefined;
 
 	const isHomePage = $derived(page.url.pathname === '/');
 
 	const navItems = $derived([
 		{ href: isHomePage ? '#home' : '/', labelKey: 'nav.home', section: 'home' },
-		{ href: isHomePage ? '#about' : '/about', labelKey: 'nav.about', section: 'about' },
-		{ href: isHomePage ? '#projects' : '/projects', labelKey: 'nav.projects', section: 'projects' },
+		{ href: '/projects', labelKey: 'nav.projects', section: 'projects' },
 		{ href: isHomePage ? '#blog' : '/blog', labelKey: 'nav.blog', section: 'blog' },
 		{ href: isHomePage ? '#contact' : '/contact', labelKey: 'nav.contact', section: 'contact' }
 	]);
-
-	$effect(() => {
-		if (!isHomePage || typeof window === 'undefined') return;
-
-		const frame = requestAnimationFrame(() => {
-			const sections = ['home', 'about', 'projects', 'blog', 'contact']
-				.map((id) => document.getElementById(id))
-				.filter((section): section is HTMLElement => section !== null);
-
-			const observer = new IntersectionObserver(
-				(entries) => {
-					const visible = entries
-						.filter((entry) => entry.isIntersecting)
-						.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-					if (visible) activeSection = visible.target.id;
-				},
-				{ rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.4, 0.7] }
-			);
-
-			sections.forEach((section) => observer.observe(section));
-			sectionObserver = observer;
-		});
-
-		return () => {
-			cancelAnimationFrame(frame);
-			sectionObserver?.disconnect();
-			sectionObserver = undefined;
-		};
-	});
 
 	async function switchLanguage(nextLocale: SupportedLocale) {
 		await changeLocale(nextLocale);
@@ -115,10 +83,9 @@
 				{#each navItems as item}
 					<Button
 						href={item.href}
-						variant={isHomePage ? activeSection === item.section ? 'outline' : 'ghost' : page.url.pathname === item.href ? 'outline' : 'ghost'}
+						variant="ghost"
 						size="sm"
-						class={isHomePage ? activeSection === item.section ? 'font-mono border-foreground/40 bg-muted text-foreground' : 'font-mono' : page.url.pathname === item.href ? 'font-mono border-foreground/40 bg-muted text-foreground' : 'font-mono'}
-						aria-current={isHomePage ? activeSection === item.section ? 'location' : undefined : page.url.pathname === item.href ? 'page' : undefined}
+						class="font-mono"
 					>
 						{$_(item.labelKey)}
 					</Button>
@@ -200,11 +167,10 @@
 						{#each navItems as item}
 							<Button
 								href={item.href}
-								variant={isHomePage ? activeSection === item.section ? 'outline' : 'ghost' : page.url.pathname === item.href ? 'outline' : 'ghost'}
+								variant="ghost"
 								size="sm"
-								class={isHomePage ? activeSection === item.section ? 'w-full justify-start font-mono border-foreground/40 bg-muted text-foreground' : 'w-full justify-start font-mono' : page.url.pathname === item.href ? 'w-full justify-start font-mono border-foreground/40 bg-muted text-foreground' : 'w-full justify-start font-mono'}
+								class="w-full justify-start font-mono"
 								onclick={closeMobileMenu}
-								aria-current={isHomePage ? activeSection === item.section ? 'location' : undefined : page.url.pathname === item.href ? 'page' : undefined}
 							>
 								{$_(item.labelKey)}
 							</Button>

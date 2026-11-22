@@ -43,7 +43,7 @@ const de = {
         roleLabel: 'Backend Software Engineer | Machine Learning | Infrastructure',
         headline: 'Hi, Jannik hier!',
         intro:
-            'Ich entwickle skalierbare, modulare Systeme mit klarer Architektur, pragmatischer Umsetzung und wartbarer Infrastruktur.',
+            'Ich entwickle Backend-Systeme, ML-Anwendungen und Infrastruktur, die wartbar und nachvollziehbar bleibt.',
         viewProjects: 'Projekte ansehen',
         viewAllProjects: 'Alle Projekte ansehen',
         contact: 'Kontakt',
@@ -53,15 +53,15 @@ const de = {
         aboutMore: 'Mehr über mich',
         viewAllPosts: 'Mehr Beiträge',
         focusHeading: 'Technischer Schwerpunkt',
-        focusIntro: 'Diese drei Bereiche prägen die Entwicklung und den Betrieb meiner Software.',
+        focusIntro: 'In diesen drei Bereichen bin ich unterwegs.',
         focusBackendHeading: 'Backend Engineering',
-        focusBackendText: 'Wartbare Services, klare Schnittstellen, typisierte Datenmodelle und pragmatische Architektur.',
+        focusBackendText: 'Wartbare Services, klare Schnittstellen und pragmatische Architektur.',
         focusMlHeading: 'Machine Learning',
-        focusMlText: 'ML-basierte Anwendungen und Computer-Vision-Systeme mit reproduzierbarer Evaluation.',
+        focusMlText: 'ML-Anwendungen und Computer Vision, vom Experiment bis zum brauchbaren System.',
         focusInfrastructureHeading: 'Infrastruktur',
-        focusInfrastructureText: 'Containerisierte Services, Kubernetes, GitOps und beobachtbare Deployments.',
+        focusInfrastructureText: 'Container, Kubernetes, GitOps und Deployment-Workflows.',
         contactHeading: 'Kontakt aufnehmen',
-        contactIntro: 'Für Themen rund um Software, Infrastruktur oder Machine Learning.'
+        contactIntro: 'Für Fragen zu Software, Infrastruktur oder Machine Learning.'
     },
     about: {
         title: 'über mich | Jannik Seus',
@@ -115,7 +115,7 @@ const de = {
             gitOps: {
                 title: 'GitOps für selbst gehostete Anwendungen',
                 description:
-                    'Deklaratives Deployment selbst gehosteter Anwendungen mit ArgoCD, Helm und Kubernetes auf einem VPS.',
+                    'ArgoCD-, Helm- und Kubernetes-Deployment für selbst gehostete Anwendungen auf einem VPS.',
                 role: 'Infrastruktur und Orchestrierung',
                 overview: 'Ein GitOps-Setup für den reproduzierbaren Betrieb selbst gehosteter Container.',
                 technicalApproach: 'Anwendungsmanifeste werden mit Helm und Kubernetes beschrieben und über ArgoCD aus Git abgeglichen.',
@@ -124,7 +124,7 @@ const de = {
             stravaLLMCoach: {
                 title: 'Strava LLM Lauftrainer',
                 description:
-                    'Eine Streamlit-Anwendung, die Strava-Aktivitätsdaten mit einem LLM-basierten Lauftrainer kombiniert.',
+                    'Strava-Aktivitätsdaten kombiniert mit einem LLM-basierten Lauftrainer in Streamlit.',
                 role: 'KI- und Softwareentwicklung',
                 overview: 'Ein dialogbasierter Lauftrainer, der Trainingshistorie und strukturierte Coaching-Inhalte nutzt.',
                 technicalApproach: 'Strava-Daten werden über OAuth geladen und in LangChain/LangGraph-Workflows mit OpenAI eingebunden. Die Streamlit-Oberfläche zeigt Trainingspläne und Chat-Antworten.',
@@ -132,7 +132,7 @@ const de = {
             },
             industrialDataDrift: {
                 title: 'Data Drift Detection in Industrial Image Processing Systems',
-                description: 'Ein Evaluationsframework zur Untersuchung von Data-Drift-Detektoren für industrielle Bildverarbeitung.',
+                description: 'Ein Evaluationsframework für Data-Drift-Detektoren in industriellen Computer-Vision-Systemen.',
                 role: 'Wissenschaftliche Evaluation und Framework-Entwicklung',
                 overview: 'Verglichen werden statistische und ML-basierte Drift-Detektoren für industrielle Computer-Vision-Systeme.',
                 technicalApproach: 'Reproduzierbare Experimente nutzen Referenzdaten, synthetische Bildkorruptionen und unbekannte Live-Daten.',
