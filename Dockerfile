@@ -1,8 +1,8 @@
-FROM oven/bun:1.3.11 AS builder
+FROM oven/bun:1.3.11-slim AS builder
 WORKDIR /app
 
 COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+RUN bun install --frozen-lockfile --ignore-scripts
 
 COPY . .
 RUN bun run prepare && bun run build
@@ -16,8 +16,9 @@ ENV PORT=3000
 COPY package.json bun.lock ./
 RUN bun install --production --frozen-lockfile --ignore-scripts
 
-COPY --from=builder /app/build ./build
-COPY --from=builder /app/static ./static
+COPY --from=builder --chown=bun:bun /app/build ./build
+COPY --from=builder --chown=bun:bun /app/static ./static
 
 EXPOSE 3000
+USER bun
 CMD ["bun", "build/index.js"]
