@@ -43,7 +43,7 @@ function parseFrontmatter(source: string): { metadata: Frontmatter; markdown: st
 			description: values.description,
 			date: values.date,
 			tags: values.tags
-				?.replace(/^\[|\]$/g, '')
+				?.replace(/^\[|]$/g, '')
 				.split(',')
 				.map((tag) => tag.trim())
 				.filter(Boolean) ?? []
@@ -73,9 +73,14 @@ export const blogPosts = Object.entries(sources)
 	.sort((a, b) => b.date.localeCompare(a.date));
 
 export function getBlogPosts(locale: SupportedLocale) {
-	return blogPosts.filter((post) => post.locale === locale);
+	const localizedPosts = blogPosts.filter((post) => post.locale === locale);
+	if (localizedPosts.length > 0) return localizedPosts;
+	return blogPosts.filter((post) => post.locale === 'en');
 }
 
 export function getBlogPost(slug: string, locale: SupportedLocale) {
-	return blogPosts.find((post) => post.slug === slug && post.locale === locale);
+	return (
+		blogPosts.find((post) => post.slug === slug && post.locale === locale) ??
+		blogPosts.find((post) => post.slug === slug && post.locale === 'en')
+	);
 }

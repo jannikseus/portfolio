@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.10] - 2026-11-23
+
+### Added
+
+- Reworked the homepage into a compact scrollable overview with dedicated project, blog, focus, and contact sections.
+- Added Mermaid diagram rendering for Markdown blog posts.
+- Added an interactive terminal Easter egg with run and reset controls.
+- Added the first German and English AI testing blog post.
+- Added a GitHub repository link and website version to the footer.
+
+### Changed
+
+- Improved homepage, project, blog, navigation, typography, theme, and responsive layout presentation.
+- Replaced the Svelte favicon with no external framework branding.
+- Updated project and blog content to be clearer and more concise.
+
 ## [0.0.9] - 2026-11-22
 
 ### Added

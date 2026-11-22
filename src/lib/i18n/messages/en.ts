@@ -40,13 +40,33 @@ const en = {
         title: 'Home | Jannik Portfolio',
         description:
             'Backend software engineer with experience in machine learning, computer vision, and infrastructure engineering.',
-        roleLabel: 'Backend Software Engineer | Machine Learning | Infrastructure',
+        roleLabel: 'Open to work',
         headline: 'Hi, this is Jannik!',
+        statusLabel: 'Open to work',
+        statusDetail: 'Backend · ML · Infrastructure',
+        terminalRunAria: 'Run terminal easter egg',
+        terminalResetAria: 'Reset terminal easter egg',
+        terminalComplete: 'system ready',
         intro:
-            'I build scalable, modular systems with clear architecture, pragmatic delivery, and maintainable infrastructure.',
+            'I build backend systems, ML applications, and infrastructure.',
         viewProjects: 'View projects',
+        viewAllProjects: 'View all projects',
         contact: 'Contact',
-        featured: 'Featured work'
+        featured: 'Featured work',
+        aboutHeading: 'About',
+        aboutText: 'Backend-oriented engineer working across machine learning, computer vision, backend systems, and infrastructure.',
+        aboutMore: 'More about me',
+        viewAllPosts: 'More posts',
+        focusHeading: 'Technical focus',
+        focusIntro: 'I work across these three areas.',
+        focusBackendHeading: 'Backend engineering',
+        focusBackendText: 'Maintainable services, clear interfaces, and pragmatic architecture.',
+        focusMlHeading: 'Machine learning',
+        focusMlText: 'ML applications and computer vision, from experiments to useful systems.',
+        focusInfrastructureHeading: 'Infrastructure',
+        focusInfrastructureText: 'Containers, Kubernetes, GitOps, and deployment workflows.',
+        contactHeading: 'Let us talk',
+        contactIntro: 'About software, infrastructure, or machine learning.'
     },
     about: {
         title: 'About | Jannik Seus',
@@ -100,24 +120,24 @@ const en = {
             gitOps: {
                 title: 'GitOps for several self-hosted applications',
                 description:
-                    'A GitOps repository that is used to orchestrate multiple containers through argoCD, helm and kubernetes on my VPS (e.g. this website).',
+                    'ArgoCD, Helm, and Kubernetes deployment for self-hosted applications on a VPS.',
                 role: 'Infrastructure and orchestration',
-                overview: 'GitOps for self-hosted applications with declarative delivery.',
-                technicalApproach: 'Containers are described with Helm and Kubernetes and synchronized from Git through ArgoCD.',
-                architecture: 'The Git repository is the configuration source while ArgoCD synchronizes the desired state into the cluster.'
+                overview: 'A GitOps setup for reproducibly operating self-hosted containers.',
+                technicalApproach: 'Application manifests are described with Helm and Kubernetes and reconciled from Git with ArgoCD.',
+                architecture: 'Git defines the desired state; ArgoCD detects changes and synchronizes them into the cluster.'
             },
             stravaLLMCoach: {
                 title: 'Strava LLM Running Coach',
                 description:
-                    'A Streamlit application integrated with Strava. A running coach as a chatbot that analyzes user data and helps creating a training plan.',
+                    'Strava activity data combined with an LLM-based running coach in Streamlit.',
                 role: 'AI and software development',
-                overview: 'A Strava-integrated application offering a running-focused chatbot.',
-                technicalApproach: 'The Streamlit application processes user data and uses Pydantic for typed data models.',
-                architecture: 'Strava data, application logic, and the chat interface are connected in a compact Python application.'
+                overview: 'A conversational running coach that uses training history and structured coaching knowledge.',
+                technicalApproach: 'Strava data is loaded through OAuth and exposed to LangChain/LangGraph workflows backed by OpenAI. The Streamlit interface presents plans and chat responses.',
+                architecture: 'Strava API data flows into the coaching logic, where user context and Markdown-based knowledge inform LangChain tool calls and generated recommendations.'
             },
             industrialDataDrift: {
                 title: 'Data Drift Detection in Industrial Image Processing Systems',
-                description: 'An evaluation framework for investigating data-drift detectors in industrial image processing.',
+                description: 'An evaluation framework for data-drift detectors in industrial computer vision.',
                 role: 'Research evaluation and framework development',
                 overview: 'Statistical and ML-based drift detectors are compared for industrial computer-vision systems.',
                 technicalApproach: 'Reproducible experiments use reference data, synthetic image corruptions, and unknown live data.',

@@ -40,13 +40,33 @@ const de = {
         title: 'Start | Jannik Seus',
         description:
             'Backend Software Engineer mit Erfahrung in Machine Learning, Computer Vision und Infrastructure Engineering.',
-        roleLabel: 'Backend Software Engineer | Machine Learning | Infrastructure',
+        roleLabel: 'Open to work',
         headline: 'Hi, Jannik hier!',
+        statusLabel: 'Open to work',
+        statusDetail: 'Backend · ML · Infrastruktur',
+        terminalRunAria: 'Terminal-Easter-Egg ausführen',
+        terminalResetAria: 'Terminal-Easter-Egg zurücksetzen',
+        terminalComplete: 'System bereit',
         intro:
-            'Ich entwickle skalierbare, modulare Systeme mit klarer Architektur, pragmatischer Umsetzung und wartbarer Infrastruktur.',
+            'Ich entwickle Backend-Systeme, ML-Anwendungen und Infrastruktur.',
         viewProjects: 'Projekte ansehen',
+        viewAllProjects: 'Alle Projekte ansehen',
         contact: 'Kontakt',
-        featured: 'Ausgewählte Arbeit'
+        featured: 'Ausgewählte Arbeit',
+        aboutHeading: 'Über mich',
+        aboutText: 'Backend-orientierter Entwickler mit Arbeit in Machine Learning, Computer Vision, Backend-Systemen und Infrastruktur.',
+        aboutMore: 'Mehr über mich',
+        viewAllPosts: 'Mehr Beiträge',
+        focusHeading: 'Technischer Schwerpunkt',
+        focusIntro: 'In diesen drei Bereichen bin ich unterwegs.',
+        focusBackendHeading: 'Backend Engineering',
+        focusBackendText: 'Wartbare Services, klare Schnittstellen und pragmatische Architektur.',
+        focusMlHeading: 'Machine Learning',
+        focusMlText: 'ML-Anwendungen und Computer Vision, vom Experiment bis zum brauchbaren System.',
+        focusInfrastructureHeading: 'Infrastruktur',
+        focusInfrastructureText: 'Container, Kubernetes, GitOps und Deployment-Workflows.',
+        contactHeading: 'Kontakt aufnehmen',
+        contactIntro: 'Für Fragen zu Software, Infrastruktur oder Machine Learning.'
     },
     about: {
         title: 'über mich | Jannik Seus',
@@ -100,24 +120,24 @@ const de = {
             gitOps: {
                 title: 'GitOps für selbst gehostete Anwendungen',
                 description:
-                    'Ein GitOps-Repository, das mehrere Container über ArgoCD, Helm und Kubernetes auf meinem VPS orchestriert (z.B. diese Website).',
+                    'ArgoCD-, Helm- und Kubernetes-Deployment für selbst gehostete Anwendungen auf einem VPS.',
                 role: 'Infrastruktur und Orchestrierung',
-                overview: 'GitOps für selbst gehostete Anwendungen mit deklarativer Bereitstellung.',
-                technicalApproach: 'Container werden mit Helm und Kubernetes beschrieben und über ArgoCD aus Git synchronisiert.',
-                architecture: 'Das Git-Repository dient als Konfigurationsquelle; ArgoCD übernimmt die Synchronisierung in den Cluster.'
+                overview: 'Ein GitOps-Setup für den reproduzierbaren Betrieb selbst gehosteter Container.',
+                technicalApproach: 'Anwendungsmanifeste werden mit Helm und Kubernetes beschrieben und über ArgoCD aus Git abgeglichen.',
+                architecture: 'Git definiert den Soll-Zustand; ArgoCD erkennt Änderungen und synchronisiert sie in den Cluster.'
             },
             stravaLLMCoach: {
                 title: 'Strava LLM Lauftrainer',
                 description:
-                    'Eine mit Strava integrierte Streamlit App. Ein Lauftrainer steht als Chatbot zur Verfügung, analysiert Nutzerdaten und hilft beim Erstellen eines Trainingsplans.',
+                    'Strava-Aktivitätsdaten kombiniert mit einem LLM-basierten Lauftrainer in Streamlit.',
                 role: 'KI- und Softwareentwicklung',
-                overview: 'Eine mit Strava integrierte Anwendung für einen laufbezogenen Chatbot.',
-                technicalApproach: 'Die Streamlit-Anwendung verarbeitet Nutzerdaten und verwendet Pydantic für typisierte Datenmodelle.',
-                architecture: 'Strava-Daten, Anwendungslogik und Chat-Interface sind in einer kompakten Python-Anwendung verbunden.'
+                overview: 'Ein dialogbasierter Lauftrainer, der Trainingshistorie und strukturierte Coaching-Inhalte nutzt.',
+                technicalApproach: 'Strava-Daten werden über OAuth geladen und in LangChain/LangGraph-Workflows mit OpenAI eingebunden. Die Streamlit-Oberfläche zeigt Trainingspläne und Chat-Antworten.',
+                architecture: 'Strava-API-Daten gelangen in die Coachingschicht, wo Nutzerkontext und Markdown-basierte Wissensdaten LangChain-Tools und generierte Empfehlungen steuern.'
             },
             industrialDataDrift: {
                 title: 'Data Drift Detection in Industrial Image Processing Systems',
-                description: 'Ein Evaluationsframework zur Untersuchung von Data-Drift-Detektoren für industrielle Bildverarbeitung.',
+                description: 'Ein Evaluationsframework für Data-Drift-Detektoren in industriellen Computer-Vision-Systemen.',
                 role: 'Wissenschaftliche Evaluation und Framework-Entwicklung',
                 overview: 'Verglichen werden statistische und ML-basierte Drift-Detektoren für industrielle Computer-Vision-Systeme.',
                 technicalApproach: 'Reproduzierbare Experimente nutzen Referenzdaten, synthetische Bildkorruptionen und unbekannte Live-Daten.',
