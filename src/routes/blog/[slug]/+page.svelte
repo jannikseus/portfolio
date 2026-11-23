@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
-	import { _, locale, resolveLocale } from '$lib/i18n';
-	import { getBlogPost } from '$lib/content/blog';
+	import { _, locale, resolveLocale } from '#lib/i18n/index';
+	import { getBlogPost } from '#lib/content/blog';
 
 	let { data }: { data: { slug: string } } = $props();
 	const post = $derived(getBlogPost(data.slug, resolveLocale($locale)));
@@ -72,8 +72,8 @@
 </svelte:head>
 
 {#if post}
-	<article class="max-w-3xl space-y-6">
-		<header class="space-y-3">
+	<article class="w-full space-y-6">
+		<header class="max-w-[68ch] space-y-3">
 			<p class="text-sm text-muted-foreground">{post.date}</p>
 			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
 			<p class="text-muted-foreground">{post.description}</p>
@@ -96,12 +96,14 @@
 	:global(.blog-markdown) {
 		display: grid;
 		gap: 1.35rem;
+		max-width: 100ch;
 		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 		font-size: 1rem;
 		line-height: 1.7;
 	}
 	:global(.blog-markdown p) {
-		max-width: 68ch;
+		max-width: 100ch;
+		text-wrap: pretty;
 	}
 	:global(.blog-markdown h2),
 	:global(.blog-markdown h3) {

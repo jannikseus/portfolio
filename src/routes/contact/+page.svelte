@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { _ } from '$lib/i18n';
+	import { Button } from '#lib/components/ui/button/index';
+	import { _ } from '#lib/i18n/index';
 </script>
 
 <svelte:head>
