@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { getBlogPost } from '$lib/content/blog';
+import { getBlogPost } from '#lib/content/blog';
 
 export async function load({ params, parent }) {
 	const { locale } = await parent();

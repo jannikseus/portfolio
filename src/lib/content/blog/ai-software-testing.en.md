@@ -1,11 +1,9 @@
 ---
 title: "AI Makes Code Cheap — Testing Becomes the Bottleneck"
 description: "AI hugely accelerates writing software. Whether the code is correct, secure, and maintainable still has to be demonstrated."
-date: "2026-11-22"
+date: "2026-11-23"
 tags: [AI, Software Development, Testing]
 ---
-
-# AI Makes Code Cheap — Testing Becomes the Bottleneck
 
 > **In short:** AI hugely accelerates *writing* software. But someone still has to show that the code is correct, secure, and maintainable. The cheaper generation gets, the scarcer verification becomes. That is where AI's more interesting opportunity lies.
 

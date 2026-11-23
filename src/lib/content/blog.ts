@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import type { SupportedLocale } from '$lib/i18n';
+import type { SupportedLocale } from '#lib/i18n';
 
 type Frontmatter = {
 	title: string;

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Card from '$lib/components/ui/card';
-	import { projects } from '$lib/data/projects';
-	import { getBlogPosts } from '$lib/content/blog';
-	import { _, locale, resolveLocale } from '$lib/i18n';
+	import { Button } from '#lib/components/ui/button/index';
+	import { Badge } from '#lib/components/ui/badge/index';
+	import * as Card from '#lib/components/ui/card/index';
+	import { projects } from '#lib/data/projects';
+	import { getBlogPosts } from '#lib/content/blog';
+	import { _, locale, resolveLocale } from '#lib/i18n/index';
 
 	const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
 	const recentPosts = $derived(getBlogPosts(resolveLocale($locale)).slice(0, 2));

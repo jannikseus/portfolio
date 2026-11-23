@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getBlogPosts } from '$lib/content/blog';
-	import { locale, resolveLocale } from '$lib/i18n';
-	import { _ } from '$lib/i18n';
+	import { getBlogPosts } from '#lib/content/blog';
+	import { locale, resolveLocale } from '#lib/i18n/index';
+	import { _ } from '#lib/i18n/index';
 
 	const posts = $derived(getBlogPosts(resolveLocale($locale)));
 </script>
@@ -13,7 +13,7 @@
 	<meta property="og:description" content={$_('blog.description')} />
 </svelte:head>
 
-<section class="max-w-2xl space-y-5">
+<section class="w-full space-y-5">
 	<h1 class="text-3xl font-semibold tracking-tight">{$_('blog.heading')}</h1>
 	<p class="text-muted-foreground">{$_('blog.intro')}</p>
 	{#if posts.length}
