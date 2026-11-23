@@ -46,14 +46,39 @@ bun run start
 Pull the published image with:
 
 ```sh
-docker pull ghcr.io/<owner>/<repo>:v0.0.5
+docker pull ghcr.io/jannikseus/portfolio:vX.Y.Z
+```
 
 For GitOps production manifests, pin exact release tags:
 
 ```yaml
-image: ghcr.io/<owner>/<repo>:v0.0.5
+image: ghcr.io/jannikseus/portfolio:vX.Y.Z
 ```
+
+### Push a new release
+
+After the PR has merged into `main`, make sure `package.json` has a new semantic version (`X.Y.Z`) and `CHANGELOG.md` has the corresponding dated release notes. If the merged PR did not include these updates, make and merge a release-preparation PR first. The version in `package.json` must match the release tag.
+
+Fetch the latest `main` and tags, then verify the version you intend to release:
+
+```sh
+git fetch origin main --tags
+git switch main
+git pull --ff-only origin main
+test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
+
+VERSION=1.2.3 # Replace with the version in package.json
+test "$(node -p "require('./package.json').version")" = "$VERSION"
 ```
+
+Create an annotated tag on the merged `main` commit and push it:
+
+```sh
+git tag -a "v$VERSION" -m "Release v$VERSION" origin/main
+git push origin "v$VERSION"
+```
+
+A push to `main` publishes only the `edge` and commit-SHA snapshot images. Pushing the `vX.Y.Z` tag starts the release workflow, which checks the version, publishes the `vX.Y.Z`, `vX.Y`, `vX`, `latest`, and commit-SHA image tags, and creates a GitHub Release with generated notes. Check the `release-image` workflow run and the GitHub Release before deploying; use the exact `vX.Y.Z` image tag for production.
 
 ## Internationalization
 
