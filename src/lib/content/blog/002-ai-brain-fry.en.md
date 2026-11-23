@@ -1,5 +1,5 @@
 ---
-title: "AI Brain Fry: What Heavy AI Use Does to My Head"
+title: "AI Brain Fry: What Heavy AI Use Does to One's Head"
 description: "A personal look at mental fatigue, skill loss, and an uncertain job market, and what research can and cannot tell us about it."
 date: "2026-11-24"
 readingTime: "10 min read"
