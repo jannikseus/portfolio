@@ -6,6 +6,13 @@ RUN bun install --frozen-lockfile --ignore-scripts
 
 COPY . .
 RUN bun run prepare && bun run build
+RUN echo "=== /app contents ===" \
+    && ls -la /app \
+    && echo "=== build directory ===" \
+    && ls -la /app/build || true \
+    && echo "=== generated directories ===" \
+    && find /app -maxdepth 3 -type d \
+       \( -name build -o -name .svelte-kit \)
 
 FROM oven/bun:1.3.11-slim AS runner
 WORKDIR /app
