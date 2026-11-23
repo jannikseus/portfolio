@@ -74,7 +74,9 @@
 {#if post}
 	<article class="w-full space-y-6">
 		<header class="max-w-[68ch] space-y-3">
-			<p class="text-sm text-muted-foreground">{post.date}</p>
+			<p class="text-sm text-muted-foreground">
+				{post.date}{#if post.readingTime}<span class="mx-1" aria-hidden="true">·</span>{' '}{post.readingTime}{/if}
+			</p>
 			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
 			<p class="text-muted-foreground">{post.description}</p>
 			<div class="flex flex-wrap gap-2 text-xs text-muted-foreground">

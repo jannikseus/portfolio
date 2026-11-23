@@ -5,6 +5,7 @@ type Frontmatter = {
 	title: string;
 	description: string;
 	date: string;
+	readingTime?: string;
 	tags: string[];
 };
 
@@ -28,7 +29,7 @@ function parseFrontmatter(source: string): { metadata: Frontmatter; markdown: st
 	const values = Object.fromEntries(
 		match[1]
 			.split('\n')
-			.map((line) => line.match(/^([a-z]+):\s*(.*)$/))
+			.map((line) => line.match(/^([a-zA-Z]+):\s*(.*)$/))
 			.filter((line): line is RegExpMatchArray => line !== null)
 			.map(([, key, value]) => [key, value.replace(/^["']|["']$/g, '')])
 	);
@@ -39,10 +40,11 @@ function parseFrontmatter(source: string): { metadata: Frontmatter; markdown: st
 
 	return {
 		metadata: {
-			title: values.title,
-			description: values.description,
-			date: values.date,
-			tags: values.tags
+				title: values.title,
+				description: values.description,
+				date: values.date,
+				...(values.readingTime ? { readingTime: values.readingTime } : {}),
+				tags: values.tags
 				?.replace(/^\[|]$/g, '')
 				.split(',')
 				.map((tag) => tag.trim())

@@ -154,7 +154,9 @@
 				<a href={`/blog/${post.slug}`} class="group">
 					<Card.Root class="interactive-card h-full group-hover:bg-muted/50">
 						<Card.Header>
-							<Card.Description>{post.date}</Card.Description>
+							<Card.Description>
+								{post.date}{#if post.readingTime}<span class="mx-1" aria-hidden="true">·</span>{' '}{post.readingTime}{/if}
+							</Card.Description>
 							<Card.Title>{post.title}</Card.Title>
 						</Card.Header>
 						<Card.Content>
