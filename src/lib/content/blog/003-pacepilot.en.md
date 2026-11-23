@@ -1,110 +1,122 @@
 ---
 title: "PacePilot: Building the Running Coach I Wanted to Have"
-description: "A personal project combining my passion for running with software engineering, Strava data and AI-powered coaching."
-date: 2026-11-23
-readingTime: "5 min read"
-tags:
-  - Python
-  - AI
-  - LLM
-  - LangGraph
-  - Strava
-  - Running
+description: "A personal project exploring AI-powered running coaching, Strava integration and the early days of LLM-based applications."
+date: 2025-06-23
+readingTime: "4 min read"
+tags: [Python, AI, LLM, LangGraph, Strava, Running]
 ---
 
 # PacePilot: Building the Running Coach I Wanted to Have
 
-Running has always been more than just putting one foot in front of the other for me. Whether it's chasing a new personal best, preparing for a race or simply getting out for an easy run, I enjoy the process of improving over time.
+I'm a runner myself, and like many others, I enjoy tracking progress, chasing personal bests and occasionally overthinking my training plan.
 
-But there is one thing I've never been particularly happy with: training plans.
+But there's always been something missing: most training plans are relatively static. They tell you what to run on a particular day, but don't necessarily adapt when you miss a session, have an unexpectedly demanding week or make faster progress than anticipated.
 
-Most plans follow a predefined schedule. They tell you exactly what to run on a particular day, but rarely account for what actually happens along the way. Miss a workout, have an unexpectedly demanding week or make faster progress than anticipated, and suddenly the plan doesn't quite fit anymore.
+At some point, I started wondering whether I could build something better. Something that understands my training history, helps me plan upcoming workouts and lets me actually discuss training decisions.
 
-As a software developer, I started wondering: **Could I build something that makes training plans more personal, adaptive and interactive?**
+That idea became **PacePilot**.
 
-That idea became PacePilot.
+## From running data to coaching
 
-## More than another training tracker
+The idea behind PacePilot was to go beyond activity tracking. Strava already does a great job of collecting running data, but understanding that data and translating it into actionable training decisions is another challenge.
 
-There are already plenty of great applications for tracking running activities. Strava, for example, provides a comprehensive overview of your training history. But tracking what you've done and deciding what you should do next are two different problems.
+PacePilot connects to the Strava API to retrieve personal activity data and uses it as the foundation for a personalized training experience.
 
-PacePilot aims to bridge that gap.
+The project combines three main components:
 
-By connecting to the Strava API, it imports personal running activities and uses them as the foundation for a more personalized coaching experience.
+- **Activity analysis:** Retrieve and process historical running activities from Strava.
+- **Training plans:** Generate personalized training recommendations based on individual training history and progress.
+- **AI coaching:** Interact with a conversational running coach to discuss workouts, training decisions and general running questions.
 
-The project revolves around three main ideas:
+The goal was to create a feedback loop between completed workouts and future training decisions.
 
-- **Understand your training:** Use actual running history rather than generic assumptions.
-- **Adapt your plan:** Generate training recommendations that take previous activities and training progress into account.
-- **Talk to your coach:** Ask questions, discuss workouts and get explanations through a conversational AI interface.
+## Meet Miles
 
-The goal isn't to replace existing running platforms. It's to build something that turns the data they collect into more meaningful training decisions.
+A central part of the project is *Miles*, an AI-powered running coach.
 
-## Meet Miles, your AI running coach
+I didn't want to build another chatbot that simply answers generic questions about running. Miles should have access to relevant personal data and actual training knowledge.
 
-One of the central components of PacePilot is Miles, a conversational running coach.
+The implementation combines LLMs with an external knowledge base containing sports-science concepts and training principles. Using LangChain and LangGraph, I experimented with structuring conversational workflows and providing the model with the context needed to give more relevant answers.
 
-I didn't want to build another chatbot that simply wraps an LLM in a running-themed interface. A useful coach needs more context than a language model can provide on its own.
+For example, instead of asking a generic chatbot how to prepare for a half marathon, you could discuss your recent training volume, ask why a particular workout is recommended or explore how to adjust your plan after missing a session.
 
-Miles combines language models with personal activity data and an external knowledge base containing sports-science concepts and training principles.
-
-This allows users to ask questions such as:
-
-- Why am I doing an easy run after yesterday's workout?
-- How should I adjust my training after missing a session?
-- What does my recent training volume say about my progress?
-- Why would a particular workout make sense for my current training?
-
-The technical foundation uses **LangChain and LangGraph** to orchestrate LLM interactions and structure more complex conversational workflows.
-
-An important design consideration is keeping the responsibilities separate. Application logic and structured training data provide the foundation; the language model makes that information accessible through natural conversation.
-
-In other words, Miles should help explain training decisions, not invent training science.
+One principle guided the implementation: **the LLM should help interpret and communicate information, not replace the underlying training logic.**
 
 ## The engineering behind it
 
-PacePilot is built primarily in Python. I wanted to keep the architecture relatively lightweight while using technologies that make individual components easy to extend.
+PacePilot is primarily a Python application built around a relatively lightweight architecture. Streamlit provides the interface, while the application logic is separated into dedicated modules for activity handling, training plan generation and AI coaching.
+
+The Strava integration handles authentication and activity retrieval. SQLite and SQLModel provide persistence for athlete and running data, which are then used by the planning and coaching components.
+
+The following diagram illustrates the main modules and their dependencies:
+
+```mermaid
+flowchart TB
+    subgraph FE["Frontend · Streamlit"]
+        HOME["Homepage"]
+        ACT["Activities"]
+        PLAN["Training Plan"]
+    end
+
+    subgraph LOGIC["Logic & AI"]
+        COACH["Miles · AI Coach"]
+        GEN["Plan Generation"]
+    end
+
+    subgraph DATA["Data & Integration"]
+        STRAVA["Strava API Client"]
+        DB[("SQLite · SQLModel")]
+    end
+
+    HOME --> COACH
+    ACT --> COACH
+    PLAN --> GEN
+    COACH --> GEN
+    STRAVA --> DB
+    GEN --> DB
+```
+
+The main technology choices were:
 
 | Area | Technology |
 |---|---|
-| Application interface | Streamlit |
+| Interface | Streamlit |
 | AI orchestration | LangChain, LangGraph |
 | Language models | OpenAI API |
 | Activity integration | Strava API |
 | Data validation | Pydantic |
-| Data modeling | SQLModel |
+| Persistence | SQLite, SQLModel |
 | Visualization | Plotly |
 
-The Strava integration handles OAuth authentication and activity retrieval. Pydantic provides structured validation, while SQLModel is used for data modeling and persistence.
+The interesting part wasn't just integrating an LLM. It was connecting external APIs, structured activity data, training knowledge and conversational interactions into one coherent application.
+## A project whose timing tells its own story
 
-On the AI side, LangGraph provides a more structured approach to conversational workflows than a simple sequence of prompts and responses.
+PacePilot was particularly interesting because of when I built it.
 
-I particularly enjoyed working at the intersection of these components. Building an AI-powered application isn't just about choosing a model and writing a good prompt. It's about designing the surrounding system: where information comes from, how it is structured, which tools the model can access and how to keep the overall experience predictable.
+LLMs were already capable enough to build useful conversational applications, but they weren't quite as powerful as today's models. Getting something meaningful out of them required considerably more thought around context, orchestration and external data.
 
-## What I learned
+Since then, the running-tech landscape has evolved considerably.
 
-PacePilot gave me an opportunity to combine two things I genuinely enjoy: running and building software.
+Strava introduced **Athlete Intelligence** to provide AI-powered insights into workout data. In April 2025, Strava also announced its acquisition of **Runna**, a dedicated running coaching platform offering personalized training plans.
 
-It also reinforced a few lessons about developing LLM-based applications:
+In other words, the exact intersection I was experimenting with has become an increasingly important part of established fitness products.
 
-**Context matters more than clever prompts.** A language model becomes much more useful when it has access to relevant, structured information instead of relying entirely on its pretrained knowledge.
+That also makes me realistic about PacePilot's commercial potential. Competing with platforms that already have millions of users, extensive training data and dedicated coaching teams was never particularly realistic. I don't expect this project to become a commercial product.
 
-**AI needs boundaries.** Training recommendations should be grounded in actual data and established principles. A convincing answer isn't necessarily a correct one.
+But that was never really the point.
 
-**Good products require ordinary engineering.** Authentication, data modeling, API integration and maintainable application architecture remain just as important when AI is involved.
+## Looking back
 
-## What's next?
+PacePilot was a fun project that brought together two things I genuinely enjoy: running and building software.
 
-PacePilot is an ongoing project, and there are plenty of things I'd like to explore further.
+More importantly, it gave me the opportunity to explore LLM-based application development at a time when the technology was becoming powerful enough to enable entirely new kinds of applications.
 
-The biggest challenge is making training recommendations genuinely adaptive and reliable. A training plan should respond to changes in training volume, missed sessions and individual progress without becoming unpredictable.
+Some of the ideas behind PacePilot might now be available directly in mainstream products. That's fine. Sometimes the value of a side project isn't building the next big product, but exploring an idea, learning new technologies and solving a problem you personally find interesting.
 
-I'd also like to improve the explainability of recommendations so that users understand not only what they should do, but why.
-
-For me, that's ultimately what makes this project interesting. I didn't start PacePilot because the world needed another running app. I started it because I wanted to experiment with an idea that combines my own interests with technologies I enjoy working with.
-
-And if it eventually helps me become a better runner along the way, even better.
+And if it helps me become a better runner along the way, even better.
 
 ---
 
 **Explore the project:** [PacePilot on GitHub](https://github.com/jannikseus/pacepilot)
+
+**Further reading:** [Strava Athlete Intelligence](https://press.strava.com/articles/strava-launches-athlete-intelligence) · [Strava's announcement of the Runna acquisition](https://press.strava.com/articles/strava-to-acquire-runna-a-leading-running-training-app)
