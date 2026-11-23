@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { _, locale, resolveLocale } from '$lib/i18n';
-	import { imprintDocuments } from '$lib/content/legal/imprint';
+	import { _, locale, resolveLocale } from '#lib/i18n/index';
+	import { imprintDocuments } from '#lib/content/legal/imprint';
 
 	const resolvedLocale = $derived(resolveLocale($locale));
 	const documentHtml = $derived(imprintDocuments[resolvedLocale]);
@@ -61,4 +61,3 @@
 		padding-left: 0.75rem;
 	}
 </style>
-

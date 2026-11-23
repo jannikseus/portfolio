@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { _, locale, resolveLocale } from '$lib/i18n';
-	import { privacyDocuments } from '$lib/content/legal/privacy';
+	import { _, locale, resolveLocale } from '#lib/i18n/index';
+	import { privacyDocuments } from '#lib/content/legal/privacy';
 
 	const resolvedLocale = $derived(resolveLocale($locale));
 	const documentHtml = $derived(privacyDocuments[resolvedLocale]);
@@ -61,4 +61,3 @@
 		padding-left: 0.75rem;
 	}
 </style>
-

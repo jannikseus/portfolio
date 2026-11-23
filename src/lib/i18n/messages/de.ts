@@ -1,17 +1,20 @@
 const de = {
     common: {
         siteName: 'Jannik Seus',
-        languageLabel: 'Sprache',
-        langEnglish: 'EN',
-		langGerman: 'DE',
-		openMenu: 'Menü',
+      		languageLabel: 'Sprache',
+      		langEnglish: 'EN',
+      		langGerman: 'DE',
+      		switchToEnglish: 'Zu Englisch wechseln',
+      		switchToGerman: 'Zu Deutsch wechseln',
+      		openMenu: 'Menü',
 		closeMenu: 'Schliessen'
     },
     theme: {
         label: 'Farbschema',
         light: 'Hell',
-        dark: 'Dunkel',
-        system: 'System'
+      		dark: 'Dunkel',
+      		system: 'System',
+      		next: 'Als Nächstes'
     },
     nav: {
         home: 'Start',

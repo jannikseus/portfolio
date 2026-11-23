@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Card from '$lib/components/ui/card';
-	import { projects } from '$lib/data/projects';
-	import { getBlogPosts } from '$lib/content/blog';
-	import { _, locale, resolveLocale } from '$lib/i18n';
+	import { Button } from '#lib/components/ui/button/index';
+	import { Badge } from '#lib/components/ui/badge/index';
+	import * as Card from '#lib/components/ui/card/index';
+	import { projects } from '#lib/data/projects';
+	import { getBlogPosts } from '#lib/content/blog';
+	import { _, locale, resolveLocale } from '#lib/i18n/index';
 
 	const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
 	const recentPosts = $derived(getBlogPosts(resolveLocale($locale)).slice(0, 2));
@@ -154,7 +154,9 @@
 				<a href={`/blog/${post.slug}`} class="group">
 					<Card.Root class="interactive-card h-full group-hover:bg-muted/50">
 						<Card.Header>
-							<Card.Description>{post.date}</Card.Description>
+							<Card.Description>
+								{post.date}{#if post.readingTime}<span class="mx-1" aria-hidden="true">·</span>{' '}{post.readingTime}{/if}
+							</Card.Description>
 							<Card.Title>{post.title}</Card.Title>
 						</Card.Header>
 						<Card.Content>

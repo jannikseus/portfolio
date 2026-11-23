@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { projects } from '$lib/data/projects';
-	import { _ } from '$lib/i18n';
+	import { Badge } from '#lib/components/ui/badge/index';
+	import { Button } from '#lib/components/ui/button/index';
+	import * as Card from '#lib/components/ui/card/index';
+	import { projects } from '#lib/data/projects';
+	import { _ } from '#lib/i18n/index';
 </script>
 
 <svelte:head>

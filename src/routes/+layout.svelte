@@ -2,10 +2,11 @@
 	import './layout.css';
 	import { fade, fly } from 'svelte/transition';
 	import { page } from '$app/state';
-	import { Button } from '$lib/components/ui/button';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
+	import { Button } from '#lib/components/ui/button/index';
+	import LanguageSwitcher from '#lib/components/LanguageSwitcher.svelte';
+	import ThemeSwitcher from '#lib/components/ThemeSwitcher.svelte';
 	import type { LayoutData } from './$types';
-	import { _, changeLocale, initI18n, locale, type SupportedLocale } from '$lib/i18n';
+	import { _, initI18n } from '#lib/i18n/index';
 	import packageJson from '../../package.json';
 
 	let { children, data }: { children: import('svelte').Snippet; data: LayoutData } = $props();
@@ -13,33 +14,79 @@
 
 	$effect(() => {
 		initI18n(localeFromData);
+		if (typeof document !== 'undefined') document.documentElement.lang = localeFromData;
 	});
 
 	let mobileMenuOpen = $state(false);
+	let mobileMenuTrigger = $state<HTMLElement | null>(null);
+	let mobileMenuCloseButton = $state<HTMLElement | null>(null);
+	let mobileMenuDialog = $state<HTMLDivElement | null>(null);
+	let desktopNavigation = $state<HTMLElement | null>(null);
+	let previouslyFocusedElement: HTMLElement | null = null;
+
+	$effect(() => {
+		if (mobileMenuOpen) {
+			mobileMenuCloseButton?.focus();
+			return;
+		}
+
+		if (previouslyFocusedElement?.isConnected) previouslyFocusedElement.focus();
+		previouslyFocusedElement = null;
+	});
 
 	const isHomePage = $derived(page.url.pathname === '/');
 
 	const navItems = $derived([
 		{ href: isHomePage ? '#home' : '/', labelKey: 'nav.home', section: 'home' },
 		{ href: '/projects', labelKey: 'nav.projects', section: 'projects' },
-		{ href: isHomePage ? '#blog' : '/blog', labelKey: 'nav.blog', section: 'blog' },
-		{ href: isHomePage ? '#contact' : '/contact', labelKey: 'nav.contact', section: 'contact' }
+		{ href: '/blog', labelKey: 'nav.blog', section: 'blog' },
+		{ href: '/contact', labelKey: 'nav.contact', section: 'contact' }
 	]);
 
-	async function switchLanguage(nextLocale: SupportedLocale) {
-		await changeLocale(nextLocale);
-
-		if (typeof document !== 'undefined') {
-			document.cookie = `locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
-		}
-	}
-
 	function toggleMobileMenu() {
+		if (!mobileMenuOpen && mobileMenuTrigger) previouslyFocusedElement = mobileMenuTrigger;
 		mobileMenuOpen = !mobileMenuOpen;
 	}
 
 	function closeMobileMenu() {
 		mobileMenuOpen = false;
+	}
+
+	function handleMobileDialogKeydown(event: KeyboardEvent) {
+		if (event.key !== 'Tab' || !mobileMenuDialog) return;
+
+		const focusableElements = Array.from(
+			mobileMenuDialog.querySelectorAll<HTMLElement>(
+				'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+			)
+		);
+		const firstFocusableElement = focusableElements[0];
+		const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+		if (!firstFocusableElement || !lastFocusableElement) {
+			event.preventDefault();
+			mobileMenuDialog.focus();
+		} else if (
+			event.shiftKey &&
+			(document.activeElement === firstFocusableElement || !mobileMenuDialog.contains(document.activeElement))
+		) {
+			event.preventDefault();
+			lastFocusableElement.focus();
+		} else if (
+			!event.shiftKey &&
+			(document.activeElement === lastFocusableElement || !mobileMenuDialog.contains(document.activeElement))
+		) {
+			event.preventDefault();
+			firstFocusableElement.focus();
+		}
+	}
+
+	function closeMobileMenuOnDesktop() {
+		if (!window.matchMedia('(min-width: 40rem)').matches || !mobileMenuOpen) return;
+
+		previouslyFocusedElement = null;
+		mobileMenuOpen = false;
+		desktopNavigation?.querySelector<HTMLElement>('a[href], button:not([disabled])')?.focus();
 	}
 </script>
 
@@ -48,7 +95,10 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<svelte:window onkeydown={(event) => mobileMenuOpen && event.key === 'Escape' && closeMobileMenu()} />
+<svelte:window
+	onkeydown={(event) => mobileMenuOpen && event.key === 'Escape' && closeMobileMenu()}
+	onresize={closeMobileMenuOnDesktop}
+/>
 
 <div class="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-6 sm:px-6 lg:px-8">
 	<header class="sticky top-0 z-30 mb-8 flex flex-col gap-4 border-b bg-background/95 py-3 backdrop-blur sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
@@ -67,7 +117,8 @@
 				type="button"
 				variant="outline"
 				size="sm"
-				class="h-9 w-9 p-0"
+				class="h-11 w-11 p-0"
+				bind:ref={mobileMenuTrigger}
 				onclick={toggleMobileMenu}
 				aria-controls="mobile-main-navigation"
 				aria-haspopup="dialog"
@@ -78,17 +129,17 @@
 				{#if mobileMenuOpen}
 					<span aria-hidden="true" class="text-base leading-none">X</span>
 				{:else}
-					<span aria-hidden="true" class="flex h-4 w-4 flex-col justify-between">
-						<span class="block h-0.5 w-4 bg-current"></span>
-						<span class="block h-0.5 w-4 bg-current"></span>
-						<span class="block h-0.5 w-4 bg-current"></span>
+					<span aria-hidden="true" class="flex h-5 w-5 flex-col justify-between">
+						<span class="block h-0.5 w-5 bg-current"></span>
+						<span class="block h-0.5 w-5 bg-current"></span>
+						<span class="block h-0.5 w-5 bg-current"></span>
 					</span>
 				{/if}
 			</Button>
 			<a class="font-mono text-sm font-semibold tracking-wide" href="/">jannikseus.tech</a>
 		</div>
 		<div class="hidden flex-wrap items-center gap-2 sm:flex">
-			<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-wrap gap-2">
+			<nav bind:this={desktopNavigation} aria-label={$_('nav.mainNavigationAria')} class="flex flex-wrap gap-2">
 				{#each navItems as item}
 					<Button
 						href={item.href}
@@ -100,109 +151,86 @@
 					</Button>
 				{/each}
 			</nav>
-			<div class="ml-1 flex items-center gap-1" aria-label={$_('common.languageLabel')}>
-				<Button
-					type="button"
-					variant={$locale === 'en' ? 'default' : 'outline'}
-					size="sm"
-					onclick={() => switchLanguage('en')}
-				>
-					{$_('common.langEnglish')}
-				</Button>
-				<Button
-					type="button"
-					variant={$locale === 'de' ? 'default' : 'outline'}
-					size="sm"
-					onclick={() => switchLanguage('de')}
-				>
-					{$_('common.langGerman')}
-				</Button>
-			</div>
+			<LanguageSwitcher />
 			<ThemeSwitcher />
 		</div>
 
-		{#if mobileMenuOpen}
-			<div class="fixed inset-0 z-40 sm:hidden">
-				<button
-					type="button"
-					class="absolute inset-0 bg-black/40"
-					onclick={closeMobileMenu}
-					aria-label={$_('common.closeMenu')}
-					transition:fade={{ duration: 150 }}
-				></button>
-				<aside
-					id="mobile-main-navigation"
-					aria-label={$_('nav.mainNavigationAria')}
-					class="absolute left-0 top-0 z-50 flex h-full w-72 max-w-[85vw] flex-col gap-4 border-r bg-background p-4 shadow-lg"
-					transition:fly={{ x: -32, duration: 180 }}
-				>
-					<div class="flex items-center justify-between gap-2">
-						<a
-							href="/"
-							class="font-mono text-sm font-semibold tracking-wide"
+	</header>
+
+	{#if mobileMenuOpen}
+		<div class="fixed inset-0 z-[100] sm:hidden">
+			<button
+				type="button"
+				class="absolute inset-0 bg-black/40"
+				onclick={closeMobileMenu}
+				aria-label={$_('common.closeMenu')}
+				transition:fade={{ duration: 150 }}
+			></button>
+			<div
+				bind:this={mobileMenuDialog}
+				id="mobile-main-navigation"
+				aria-label={$_('nav.mainNavigationAria')}
+				class="absolute left-0 top-0 z-[101] flex h-dvh w-72 max-w-[85vw] flex-col gap-4 overflow-y-auto border-r border-border bg-white p-4 shadow-xl dark:bg-[#1f1f1f]"
+				role="dialog"
+				aria-modal="true"
+				tabindex="-1"
+				onkeydown={handleMobileDialogKeydown}
+				transition:fly={{ x: -32, duration: 180 }}
+			>
+				<div class="flex items-center justify-between gap-2">
+					<a
+						href="/"
+						class="font-mono text-sm font-semibold tracking-wide"
+						onclick={closeMobileMenu}
+					>
+						jannikseus.tech
+					</a>
+					<Button
+						type="button"
+						variant="ghost"
+						size="icon-sm"
+						class="size-11 text-base"
+						bind:ref={mobileMenuCloseButton}
+						onclick={closeMobileMenu}
+						aria-label={$_('common.closeMenu')}
+					>
+						X
+					</Button>
+				</div>
+				<div class="flex items-center gap-2 [&>button]:min-h-11 [&>button]:min-w-11 [&>button]:text-sm [&_svg]:size-5">
+					<LanguageSwitcher />
+					<ThemeSwitcher />
+				</div>
+				<div class="technical-label flex items-center gap-2 text-xs text-muted-foreground">
+					<span class="size-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+					<span class="text-foreground">{$_('home.statusLabel')}</span>
+				</div>
+				<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-col gap-1 border-t pt-3">
+					{#each navItems as item}
+						<Button
+							href={item.href}
+							variant="ghost"
+							size="sm"
+							class="h-11 w-full justify-start font-mono text-sm"
 							onclick={closeMobileMenu}
 						>
-							jannikseus.tech
+							{$_(item.labelKey)}
+						</Button>
+					{/each}
+				</nav>
+				<div class="mt-auto border-t pt-3 text-xs text-muted-foreground">
+					<div class="flex flex-wrap gap-3">
+						<a class="underline underline-offset-4 hover:text-foreground" href="/imprint" onclick={closeMobileMenu}>
+							{$_('layout.imprint')}
 						</a>
-						<div class="flex items-center gap-1" aria-label={$_('common.languageLabel')}>
-							<Button
-								type="button"
-								variant={$locale === 'en' ? 'default' : 'outline'}
-								size="sm"
-								class="justify-start"
-								onclick={async () => {
-									await switchLanguage('en');
-									closeMobileMenu();
-								}}
-							>
-								{$_('common.langEnglish')}
-							</Button>
-							<Button
-								type="button"
-								variant={$locale === 'de' ? 'default' : 'outline'}
-								size="sm"
-								class="justify-start"
-								onclick={async () => {
-									await switchLanguage('de');
-									closeMobileMenu();
-								}}
-							>
-								{$_('common.langGerman')}
-							</Button>
-						</div>
-						<ThemeSwitcher />
+						<a class="underline underline-offset-4 hover:text-foreground" href="/privacy" onclick={closeMobileMenu}>
+							{$_('layout.privacy')}
+						</a>
 					</div>
-					<div class="technical-label flex items-center gap-2 text-xs text-muted-foreground">
-						<span class="size-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
-						<span class="text-foreground">{$_('home.statusLabel')}</span>
-					</div>
-					<nav aria-label={$_('nav.mainNavigationAria')} class="flex flex-col gap-1 border-t pt-3">
-						{#each navItems as item}
-							<Button
-								href={item.href}
-								variant="ghost"
-								size="sm"
-								class="w-full justify-start font-mono"
-								onclick={closeMobileMenu}
-							>
-								{$_(item.labelKey)}
-							</Button>
-						{/each}
-					</nav>
-					<div class="mt-auto border-t pt-3 text-xs text-muted-foreground">
-						<div class="flex flex-wrap gap-3">
-							<a class="underline underline-offset-4 hover:text-foreground" href="/imprint" onclick={closeMobileMenu}>
-								{$_('layout.imprint')}
-							</a>
-							<a class="underline underline-offset-4 hover:text-foreground" href="/privacy" onclick={closeMobileMenu}>
-								{$_('layout.privacy')}
-							</a>
-						</div>
-					</div>
-				</aside>
+				</div>
 			</div>
-		{/if}
-	</header>
+		</div>
+	{/if}
 
 	<main class="flex-1">{@render children()}</main>
 
