@@ -1,29 +1,152 @@
 <script lang="ts">
+	import { onDestroy, onMount } from 'svelte';
 	import { Button } from '#lib/components/ui/button/index';
 	import { Badge } from '#lib/components/ui/badge/index';
 	import * as Card from '#lib/components/ui/card/index';
+	import { generate, getHourlySalt, PRESETS } from '#lib/ascii-gen';
 	import { projects } from '#lib/data/projects';
 	import { getBlogPosts } from '#lib/content/blog';
 	import { _, locale, resolveLocale } from '#lib/i18n/index';
 
 	const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
 	const recentPosts = $derived(getBlogPosts(resolveLocale($locale)).slice(0, 2));
-	let easterEggActive = $state(false);
+	let started = $state(false);
+	let running = $state(false);
+	let input = $state(PRESETS[0]);
+	let lines = $state<string[]>([]);
+	let completed = $state(false);
+	let presetIndex = 0;
+	let inputFocused = false;
+	let inputEdited = false;
+	let runId = 0;
+	let timeoutId: ReturnType<typeof setTimeout> | undefined;
+	let resetTimeoutId: ReturnType<typeof setTimeout> | undefined;
+	let presetIntervalId: ReturnType<typeof setInterval> | undefined;
+
+	function nextPreset() {
+		presetIndex = (presetIndex + 1) % PRESETS.length;
+		return PRESETS[presetIndex];
+	}
+
+	function scheduleTerminalReset() {
+		if (resetTimeoutId) clearTimeout(resetTimeoutId);
+		if (inputFocused || inputEdited) return;
+
+		const activeRunId = runId;
+		resetTimeoutId = setTimeout(() => {
+			if (activeRunId === runId && completed && !inputFocused && !inputEdited) resetTerminal();
+		}, 5000);
+	}
+
+	function handleInputFocus(event: FocusEvent) {
+		inputFocused = true;
+		if (resetTimeoutId) clearTimeout(resetTimeoutId);
+		resetTimeoutId = undefined;
+		(event.currentTarget as HTMLInputElement).select();
+	}
+
+	function handleInputBlur() {
+		inputFocused = false;
+		if (completed) scheduleTerminalReset();
+	}
+
+	function handleInput() {
+		inputEdited = true;
+		if (resetTimeoutId) clearTimeout(resetTimeoutId);
+		resetTimeoutId = undefined;
+		if (completed) completed = false;
+	}
+
+	function handleTerminalInteraction() {
+		if (completed) scheduleTerminalReset();
+	}
 
 	function runTerminal() {
-		easterEggActive = true;
+		let command = input.trim().replace(/\s+/g, ' ');
+
+		if (!command) {
+			command = nextPreset();
+		}
+
+		if (command.toLowerCase() === 'clear') {
+			resetTerminal();
+			return;
+		}
+
+		if (timeoutId) clearTimeout(timeoutId);
+		if (resetTimeoutId) clearTimeout(resetTimeoutId);
+		resetTimeoutId = undefined;
+
+		const activeRunId = ++runId;
+		const output = generate(command, getHourlySalt());
+		input = '';
+		inputEdited = false;
+		const prefersReducedMotion =
+			typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		started = true;
+		running = true;
+		completed = false;
+		lines = [];
+
+		function appendLine(index: number) {
+			if (activeRunId !== runId) return;
+
+			lines = output.slice(0, index + 1);
+			if (index === output.length - 1) {
+				running = false;
+				completed = true;
+				timeoutId = undefined;
+				scheduleTerminalReset();
+				return;
+			}
+
+			timeoutId = setTimeout(() => appendLine(index + 1), 100);
+		}
+
+		if (prefersReducedMotion) {
+			lines = output;
+			running = false;
+			completed = true;
+			timeoutId = undefined;
+			scheduleTerminalReset();
+		} else {
+			appendLine(0);
+		}
 	}
 
 	function resetTerminal() {
-		easterEggActive = false;
+		runId += 1;
+		if (timeoutId) clearTimeout(timeoutId);
+		if (resetTimeoutId) clearTimeout(resetTimeoutId);
+		timeoutId = undefined;
+		resetTimeoutId = undefined;
+		started = false;
+		running = false;
+		completed = false;
+		inputEdited = false;
+		input = nextPreset();
+		lines = [];
 	}
 
-	function handleTerminalKeydown(event: KeyboardEvent) {
-		if (event.key === 'Enter') {
-			event.preventDefault();
-			runTerminal();
-		}
+	function handleTerminalSubmit(event: SubmitEvent) {
+		event.preventDefault();
+		runTerminal();
 	}
+
+	onMount(() => {
+		presetIntervalId = setInterval(() => {
+			if (!started && !running && !inputFocused && PRESETS.includes(input.trim())) {
+				input = nextPreset();
+			}
+		}, 3000);
+
+		return () => {
+			if (presetIntervalId) clearInterval(presetIntervalId);
+		};
+	});
+
+	onDestroy(resetTerminal);
 </script>
 
 <svelte:head>
@@ -36,56 +159,54 @@
 <section id="home" class="mb-10 scroll-mt-28 space-y-5">
 	<h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">{$_('home.headline')}</h1>
 	<div
-		class="technical-label terminal-panel w-full border border-border bg-muted/20 px-4 py-3 text-sm"
-		role="button"
-		tabindex="0"
-		aria-label={$_('home.terminalRunAria')}
-		onkeydown={handleTerminalKeydown}
-		onclick={runTerminal}
+		class="technical-label terminal-panel min-w-0 w-full border border-border bg-muted/20 px-4 py-3 text-sm"
+		role="group"
+		aria-label={$_('home.terminalGroupAria')}
+		onpointerdown={handleTerminalInteraction}
+		onwheel={handleTerminalInteraction}
 	>
-		<div class="mb-2 flex gap-1.5" aria-hidden="true">
-			<span class="size-2 rounded-full bg-red-500/70"></span>
-			<span class="size-2 rounded-full bg-amber-500/70"></span>
-			<span class="size-2 rounded-full bg-emerald-500/70"></span>
-			<button
-				type="button"
-				class="ml-auto technical-label size-6 text-center text-xs leading-5 text-muted-foreground transition-colors hover:text-foreground"
-				aria-label={easterEggActive ? $_('home.terminalResetAria') : $_('home.terminalRunAria')}
-				onclick={(event) => {
-					event.stopPropagation();
-					easterEggActive ? resetTerminal() : runTerminal();
-				}}
-			>
-				<span aria-hidden="true">{easterEggActive ? '↩' : '▶'}</span>
-			</button>
+		<div class="mb-2 flex items-center">
+			<div class="flex gap-1.5" aria-hidden="true">
+				<span class="size-2 rounded-full bg-red-500/70"></span>
+				<span class="size-2 rounded-full bg-amber-500/70"></span>
+				<span class="size-2 rounded-full bg-emerald-500/70"></span>
+			</div>
+			{#if started}
+				<button
+					type="button"
+					class="ml-auto technical-label rounded px-2 py-1 text-xs leading-5 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+					aria-label={$_('home.terminalResetAria')}
+					onclick={resetTerminal}
+				>
+					<span aria-hidden="true">↩</span>
+				</button>
+			{/if}
 		</div>
-		{#if easterEggActive}
+		<form class="mb-3 flex min-w-0 items-center gap-2 border-b border-border/70 pb-3" onsubmit={handleTerminalSubmit}>
+			<label for="terminal-input" class="text-muted-foreground" aria-hidden="true">$</label>
+			<input
+				id="terminal-input"
+				class="min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground sm:text-sm"
+				aria-label={$_('home.terminalInputAria')}
+				placeholder={$_('home.terminalPlaceholder')}
+				autocomplete="off"
+				autocapitalize="off"
+				spellcheck="false"
+				enterkeyhint="go"
+				onfocus={handleInputFocus}
+				onblur={handleInputBlur}
+				oninput={handleInput}
+				bind:value={input}
+			/>
+		</form>
+		{#if started}
 			<pre
-				class="overflow-x-auto text-[11px] leading-tight text-foreground"
-				aria-live="polite"
-			>{[
-				'   _                   _ _                   ',
-				'  (_) __ _ _ __  _ __ (_) | __  _____  _____ ',
-				'  | |/ _` | \'_ \\| \'_ \\| | |/ / / _ \\ \\/ / _ \\',
-				'  | | (_| | | | | | | | |   < |  __/>  <  __/',
-				' _/ |\\__,_|_| |_|_| |_|_|_|\\_(_)___/_/\\_\\___|',
-				'|__/'
-			].join('\n')}</pre>
-		{:else}
-			<p class="terminal-line terminal-line-1 flex items-baseline">
-				<span class="text-muted-foreground">$</span>
-				<span class="terminal-reveal ml-1">build <span class="text-foreground">backend</span></span>
-			</p>
-			<p class="terminal-line terminal-line-2 flex items-baseline">
-				<span class="text-muted-foreground">$</span>
-				<span class="terminal-reveal ml-1">train <span class="text-foreground">models</span></span>
-			</p>
-			<p class="terminal-line terminal-line-3 flex items-baseline">
-				<span class="text-muted-foreground">$</span>
-				<span class="terminal-reveal ml-1">deploy <span class="text-foreground">infrastructure</span></span>
-				<span class="terminal-cursor ml-1 inline-block h-4 w-1.5 self-baseline bg-foreground opacity-0"></span>
-			</p>
+				class="max-h-64 max-w-full overflow-auto whitespace-pre text-[11px] leading-tight text-foreground"
+				aria-live="off"
+				aria-busy={running}
+			>{lines.join('\n')}</pre>
 		{/if}
+		<p class="sr-only" role="status" aria-live="polite">{completed ? $_('home.terminalComplete') : ''}</p>
 	</div>
 </section>
 

@@ -3,4 +3,4 @@
 **Name:** Jannik Seus\
 **Anschrift:** Auf Anfrage\
 **E-Mail:** jannik.seus@mailbox.org\
-**Telefon:** Auf Anfrage\
+**Telefon:** Auf Anfrage
