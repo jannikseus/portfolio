@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-25
+
+### Added
+
+- Added an interactive terminal that generates deterministic ASCII patterns for commands, with a new variation on each run.
+
 ## [0.0.10] - 2026-11-23
 
 ### Added
